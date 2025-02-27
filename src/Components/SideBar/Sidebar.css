@@ -1,0 +1,48 @@
+.sidebar {
+  height: 670px;
+  width: 16rem;
+  background-color: #28313f;
+  display: flex;
+  border-radius: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 3rem;
+  margin-top: 5rem;
+  gap: 2.2rem;
+  color: #e2e5e9;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.sidebar--dropdown img {
+  height: 2rem;
+  margin-right: 0.7rem;
+  filter: invert(0.6);
+}
+
+.sidebar--dropdown .active {
+  font-weight: bold;
+  color: rgb(12, 216, 138);
+}
+
+.side--icon .active {
+  filter: invert(0.1);
+  background-color: antiquewhite;
+  height: 4rem;
+  fill: blue;
+}
+
+.content {
+  margin-left: 270px;
+  padding: 20px;
+}
