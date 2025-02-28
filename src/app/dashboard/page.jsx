@@ -3,6 +3,7 @@
 import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import './Dashboard.css'
+import DashComp from "./Components/DashComp";
 
 export default function Dashboard() {
     return (
@@ -16,7 +17,9 @@ export default function Dashboard() {
                         <div className="sidebar">
                             <Sidebar />
                         </div>
-                        <div className="dash-main"></div>
+                        <div className="dash-main">
+                            <DashComp />
+                        </div>
                     </div>
                 </div>
             </div>

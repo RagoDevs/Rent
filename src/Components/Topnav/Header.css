@@ -45,3 +45,25 @@
 .header--right img:hover {
     filter: invert(1);
 }
+
+
+@media screen and (max-width: 1000px) {
+
+    .header--right img, 
+    .header--right h2{
+        display: none;
+    }
+   
+
+    .header--right {
+        background-image: url('/Assets/burger-bar.png');
+        color: #e2e5e9;
+        height: 3rem;
+        width: 2.3rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        filter: invert();
+        margin-top: 1rem;
+    }
+  }
