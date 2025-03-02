@@ -3,6 +3,8 @@
 import RentDue from "./Dashtables/RentDues/RentDue";
 import './DashComp.css'
 import EmptyHouses from "./Dashtables/EmptyHouses/EmptyHouses";
+import NewEntrants from "./Dashtables/NewEntrants/NewEntrants";
+import TotalPay from "./TotalPay/TotalPay";
 
 
 export default function DashComp () {
@@ -15,7 +17,11 @@ export default function DashComp () {
                 </div>
                 <div className="dashwrapper-side">
                     <EmptyHouses />
+                    <NewEntrants />
                 </div>
+            </div>
+            <div className="dash-bottom">
+                <TotalPay />
             </div>
         </div>
         </>

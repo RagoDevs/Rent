@@ -1,6 +1,5 @@
 .sidebar {
   height: 670px;
-  width: 16rem;
   background-color: #28313f;
   display: flex;
   border-radius: 10px;
@@ -15,6 +14,10 @@
   margin-top: 5rem;
   gap: 2.2rem;
   color: #e2e5e9;
+}
+
+.sidebar li:hover {
+  color: rgb(42, 251, 5);
 }
 
 .sidebar li {
@@ -35,21 +38,28 @@
   color: rgb(12, 216, 138);
 }
 
-.side--icon .active {
-  filter: invert(0.1);
-  background-color: antiquewhite;
-  height: 4rem;
-  fill: blue;
-}
-
-.content {
-  margin-left: 270px;
-  padding: 20px;
-}
-
 @media screen and (max-width: 1000px) {
   .sidebar {
-      display: none;
+    position: absolute;
+    height: 27rem;
+    top: 5.5rem;
+    right: 1rem;
+    z-index: 100;
+    background-color: black;
+  }
+  .sidebar ul {
+    margin-top: 2.2rem;
+    gap: 1rem;
+    color: #e2e5e9;
+    padding: 0 2.7rem;
+  }
+
+  .sidebar--dropdown img {
+    height: 1rem;
     
+  }
+
+  .side--icon img{
+    height: 1rem;
   }
 }

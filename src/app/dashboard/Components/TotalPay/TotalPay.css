@@ -1,0 +1,41 @@
+.dashbottom-wrapper1 {
+    height: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #28313f;
+  }
+
+  .totalpay--header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 0 1rem;
+    gap: .5rem;
+  }
+  
+  .totalpay--header img {
+    height: 4rem;
+  }
+  
+  .totalpay--header h2 {
+    font-size: 1.2rem;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 600;
+  }
+  
+  .pay--amount {
+    width: 60%;
+    background-color: #565657;
+    height: 3.8rem;
+    align-content: center;
+    border-radius: 3px;
+    opacity: .2;
+    margin: 1rem 4rem;
+  }
+  
+  .dashbottom-wrapper1 h3{
+    text-align: center;
+    color: blanchedalmond;
+    font-size: 1.5rem;
+  }

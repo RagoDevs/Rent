@@ -14,7 +14,7 @@ export default function Dashboard() {
                 </div>
                 <div className="dash-container">
                     <div className="dash-wrapper">
-                        <div className="sidebar">
+                        <div className="sidenav">
                             <Sidebar />
                         </div>
                         <div className="dash-main">
