@@ -16,10 +16,6 @@
   color: #e2e5e9;
 }
 
-.sidebar li:hover {
-  color: rgb(42, 251, 5);
-}
-
 .sidebar li {
   display: flex;
   align-items: center;
@@ -27,10 +23,20 @@
   margin: 10px 0;
 }
 
+.sidebar li h4 {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sidebar li:hover {
+  color: rgb(42, 251, 5);
+}
+
 .sidebar--dropdown img {
   height: 2rem;
   margin-right: 0.7rem;
   filter: invert(0.6);
+  vertical-align: middle;
 }
 
 .sidebar--dropdown .active {
@@ -54,12 +60,17 @@
     padding: 0 2.7rem;
   }
 
+  .sidebar li {
+    height: 2.2rem;
+  }
+
   .sidebar--dropdown img {
     height: 1rem;
     
   }
 
-  .side--icon img{
-    height: 1rem;
+  .sidebar li img {
+    height: 2rem;
+    object-fit: cover;
   }
 }

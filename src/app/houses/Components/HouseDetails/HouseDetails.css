@@ -1,0 +1,106 @@
+.house--info {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.3rem 1rem;
+    width: 85%;
+  }
+  
+  .houseinfo--header {
+    color: white;
+  }
+  
+  .houseinfo--header p {
+    color: rgb(126, 124, 124);
+    padding: .2rem 0;
+  }
+  
+  .houseinfo--occupant {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+  
+  .houseinfo--occupant img {
+    height: 2.2rem;
+    background-color: aliceblue;
+    border-radius: 50%;
+  }
+  
+  .houseinfo--occupant h3 {
+    text-align: center;
+    color: white;
+    font-weight: 400;
+  }
+  
+  .house--update {
+    margin: 0 1rem;
+    width: 93%;
+    height: 38%;
+    background-color: #364253;
+    padding: 2.3rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .house--update p {
+    color: #a6a9ad;
+  }
+  
+  .house--price {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .house--status {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .house--contract {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .house--contract  h4{
+    border: 1px solid rgb(99, 97, 97);
+    height: 2rem;
+    width: 5rem;
+    text-align: center;
+    align-content: center;
+    border-radius: 5px;
+  }
+  
+  .house--update button {
+    height: 2.5rem;
+    border-radius: 7px;
+    border: none;
+    background-color: rgb(57, 57, 243);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .house--activity {
+    width: 90%;
+    height: 62%;
+    padding: 1.2rem;
+  }
+  
+  .house--activity h3 {
+    color: aliceblue;
+    font-size: 24px;
+  }
+  
+  .house--activity ul {
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0 0 .9rem;
+  }
+  
+  .house--activity li {
+    padding: 1.1rem 0 0 1rem;
+    color: aliceblue;
+  }

@@ -1,0 +1,81 @@
+.house--header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  height: 50px;
+  grid-column: 1;
+}
+
+.house--header h2 {
+  font-size: 35px;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+.househeader--search {
+  display: flex;
+}
+
+.search--input input {
+  background-color: #28313f;
+  border: none;
+  height: 30px;
+  width: 200px;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.add--house button {
+  height: 33px;
+  background-color: rgb(57, 57, 243);
+  padding: 0.2rem;
+  border: none;
+  width: 90px;
+  border-radius: 5px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.house--table {
+  grid-column: 1;
+  width: 100%;
+  height: 86%;
+  background-color: #1e242e;
+  padding: 0.8rem;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+
+.house--table table {
+  width: 100%;
+  border-spacing: 0 1.2rem;
+}
+
+.house--table table tr {
+  width: 100%;
+  text-align: center;
+  height: 4.6rem;
+  cursor: pointer;
+}
+
+.house--table td {
+  background-color: #28313f;
+  color: aliceblue;
+}
+
+.house--table table h4 {
+  color: rgb(83, 83, 209);
+}
+
+@media screen and (max-width: 700px) {
+  .house--table {
+    overflow-x: auto;
+  }
+
+  .house--table table {
+    width: 100%;
+    min-width: 600px;
+    overflow: scroll;
+  }
+}

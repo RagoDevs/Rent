@@ -13,27 +13,55 @@ export default function Sidebar() {
                 <div className="sidebar--dropdown">
                     <ul>
                         <li className={pathname === '/dashboard' ? 'active' : ''}>
-                            <img 
-                            className='side--icon'
-                            src="/Assets/menu.svg" 
-                            alt="" />
-                            <Link href="/dashboard">Dashboard</Link>
+
+                            <Link href="/dashboard">
+                                <img
+                                    className='side--icon'
+                                    src="/Assets/menu.svg"
+                                    alt=""
+                                />
+                                Dashboard
+                            </Link>
                         </li>
                         <li className={pathname === '/houses' ? 'active' : ''}>
-                            <img src="/Assets/home.png" alt="" />
-                            <Link href="/houses">Houses</Link>
+
+                            <Link href="/houses">
+                                <img
+                                    src="/Assets/home.png"
+                                    alt=""
+                                />
+                                Houses
+                            </Link>
                         </li>
                         <li className={pathname === '/payments' ? 'active' : ''}>
-                            <img src="/Assets/credit-card.png" alt="" />
-                            <Link href="/payments">Payments</Link>
+
+                            <Link href="/payments">
+                                <img
+                                    src="/Assets/credit-card.png"
+                                    alt=""
+                                />
+                                Payments
+                            </Link>
                         </li>
                         <li className={pathname === '/tenants' ? 'active' : ''}>
-                            <img src="/Assets/lender.png" alt="" />
-                            <Link href="/tenants">Tenants</Link>
+
+                            <Link href="/tenants">
+                                <img
+                                    src="/Assets/lender.png"
+                                    alt=""
+                                />
+                                Tenants
+                            </Link>
                         </li>
                         <li className={pathname === '/maps' ? 'active' : ''}>
-                            <img src="/Assets/map.png" alt="" />
-                            <Link href="/maps">Maps</Link>
+
+                            <Link href="/maps">
+                                <img
+                                    src="/Assets/map.png"
+                                    alt=""
+                                />
+                                Maps
+                            </Link>
                         </li>
                     </ul>
                 </div>
