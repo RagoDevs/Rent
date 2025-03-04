@@ -1,0 +1,164 @@
+
+.pay--header{
+    margin: 1rem 0 0 .5rem;
+    color: aliceblue;
+}
+  
+.paycontainer--one {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 410px;
+    gap: 1rem;
+}
+
+.paywrapper--one {
+    grid-column: 1 / span 2;
+    width: 100%;
+    height: 100%; 
+    background-color: #28313f;
+    border-radius: 10px;
+}
+
+.paywrapper--one h3 {
+  margin: 1.8rem 0 1rem 1.8rem;
+  color: white;
+}
+
+.payment--table {
+  width: 100%;
+  height: 331px;
+  padding: 0 .5rem;
+  overflow: scroll;
+}
+
+.payment--table table {
+  width: 100%;
+  height: 99%;
+  text-align: center;
+  color: #fff;
+  overflow-y: scroll;
+}
+
+.payment--table table thead {
+  position: sticky;
+  background-color: #113d85;
+  height: 2rem;
+  top: 0;
+  color: #a6a9ad;
+}
+
+.payment--table table th {
+  border-radius: 6px;
+}
+
+.payment--table table td {
+  padding: 1rem 0;
+}
+.paywrapper--two {
+    grid-column: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.paywrapper--min1 {
+    height: 50%;
+    background-color: #113d85;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.paymenttotal-header {
+  display: flex;
+  margin: 2rem;
+  gap: 2rem;
+  align-items: center;
+  color: black;
+}
+
+.paymenttotal-header img {
+  height: 3.8rem;
+  filter: invert(1);
+}
+
+.paywrapper--min1 h3 {
+  margin-left: 2rem;
+  font-size: 26px;
+  color: aliceblue;
+}
+
+.paywrapper--min1 p {
+  color: #7b7b7c;
+  margin-left: 2rem;
+  margin-bottom: .5rem;
+  
+}
+
+.paywrapper--min2 {
+    height: 50%;
+    background-color: #113d85;
+    border-radius: 10px;
+}
+
+.paymentdue-header {
+  display: flex;
+  margin: 2rem;
+  gap: 2rem;
+  align-items: center;
+  color: black;
+}
+
+
+.paymentdue-header img {
+  height: 3.8rem;
+  filter: invert(1);
+}
+
+.paywrapper--min2 h3 {
+  margin-left: 2rem;
+  font-size: 26px;
+  color: aliceblue;
+}
+
+.paywrapper--min2 p {
+  color: #7b7b7c;
+  margin-left: 2rem;
+  margin-bottom: .5rem;
+}
+.paycontainer--two {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+    .payment--table {
+      overflow: auto;
+      height: 341px;
+    }
+  
+    .payment--table table {
+      width: 100%;
+      min-width: 500px;
+      overflow: scroll;
+    }
+  
+    .paywrapper--two {
+      overflow-x: hidden;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+
+    .paycontainer--one {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+    }
+}
