@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull, NPM Install, Restart Service and Reload Nginx
+        uses: appleboy/ssh-action@master
+        with:
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USERNAME }}
+           password: ${{ secrets.PASSWORD }}
+           port: ${{ secrets.PORT }}
+           script: |
+               export NVM_DIR="$HOME/.nvm"
+               [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+               
+               cd /var/www/rent
+               git pull
+               npm ci
+               npm run build
+               
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl stop rent.service 
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl start rent.service 
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl reload nginx
