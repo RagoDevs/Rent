@@ -23,7 +23,6 @@ jobs:
                cd /var/www/Rent
                git pull
                npm ci
-               npm run build
                
                echo ${{ secrets.PASSWORD }} | sudo -S systemctl stop rent.service 
                echo ${{ secrets.PASSWORD }} | sudo -S systemctl start rent.service 
