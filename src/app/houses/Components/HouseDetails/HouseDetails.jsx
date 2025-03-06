@@ -5,7 +5,7 @@ import './HouseDetails.css'
 export default function HouseDetails () {
     return (
         <>
-        <div class="house--info">
+        <div className="house--info">
                     <div className="houseinfo--header">
                         <p>Kivule</p>
                         <h3>House A</h3>

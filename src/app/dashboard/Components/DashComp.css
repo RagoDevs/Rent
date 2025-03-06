@@ -1,36 +1,48 @@
 .dash-content-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .dash-content-wrapper {
-    width: 100%;
-    height: 610px;
-    background-color: #28313f;
-    border-radius: 10px;
-    padding: 1rem;
+  width: 100%;
+  height: 610px;
+  background-color: #28313f;
+  border-radius: 10px;
+  padding: 1rem;
 
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
 }
 
 .due-rent {
-    grid-column: 1;
+  grid-column: 1;
   padding: 0 0 2rem 1rem;
 }
 
 .dashwrapper-side {
-    grid-column: 2;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  grid-column: 2;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .dash-bottom {
-    width: 60%;
-    height: 11.3rem;
+  width: 60%;
+  height: 11.3rem;
+}
+
+@media screen and (max-width: 760px) {
+  .dash-content-wrapper {
+    display: flex;
+    height: auto;
+    flex-direction: column;
   }
+
+  .dash-bottom {
+    width: 100%;
+  }
+}

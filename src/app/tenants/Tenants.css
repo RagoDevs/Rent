@@ -28,15 +28,27 @@
     grid-column: 2;
 
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
     gap: 1rem;
+}
+
+.tenants-count {
+    grid-row: 1;
+    height: fit-content;
+}
+
+.tenants-table-bg {
+    grid-row: 2;
+
+    overflow-x: auto;
 }
 
 
 @media screen and (max-width: 1000px) {
 
     .tenants-wrapper {
+        display: grid;
         grid-template-columns: 1fr;
     }
 

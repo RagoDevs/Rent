@@ -1,136 +1,137 @@
 .tenantcontainer--one {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    height: auto;
-    width: 100%;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  gap: 1rem;
 }
 
 .tenantwrapper--one {
-    grid-column: 1;
-    padding: 0 0 1rem;
-    background-color: #28313f;
-    border-radius: 10px;
+  grid-column: 1;
+  padding: 0 0 1rem;
+  background-color: #28313f;
+  border-radius: 10px;
 }
 
 .tenantwrapper--one img {
-    height: 15rem;
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
+  height: 15rem;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .tenantwrapper--one h3 {
-    margin: 1rem 1.5rem 0 1rem;
-    color: aliceblue;
+  margin: 1rem 1.5rem 0 1rem;
+  color: aliceblue;
 }
 
 .tenantwrapper--one p {
-    color: #818283;
-    margin: .2rem 1rem;
-    font-size: 15px;
-
+  color: #818283;
+  margin: 0.2rem 1rem;
+  font-size: 15px;
 }
 
 .tenantwrapper--two {
-    grid-column: 2;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
+  grid-column: 2;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .tenantwrapper--min1 {
-    height: 50%;
-    border-radius: 10px;
-    background-color: #28313f;
-    display: flex;
+  height: 50%;
+  border-radius: 10px;
+  background-color: #28313f;
+  display: flex;
 }
 
 .side--color {
-    background-color: #113d85;
-    height: 100%;
-    width: 25%;
-    border-radius: 10px;
+  background-color: #113d85;
+  height: 100%;
+  width: 25%;
+  border-radius: 10px;
 }
 
 .tenant--total {
-    margin: 2rem 1.9rem;
+  margin: 2rem 1.9rem;
 }
 .tenant--due,
 .tenant--new,
 .tenant--left {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 .tenant--total h3,
 .tenant--due h3,
 .tenant--new h3,
 .tenant--left h3 {
-    font-weight: 500;
-    font-size: 25px;
-    color: aliceblue;
-    font-family: sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  color: aliceblue;
+  font-family: sans-serif;
 }
-
 
 .tenant--total h4,
 .tenant--due h4,
 .tenant--new h4,
 .tenant--left h4 {
-    margin-top: .8rem;
-    font-size: 40px;
-    text-align: end;
-    color: antiquewhite;
-    font-family: sans-serif;
-    font-weight: 500;
+  margin-top: 0.8rem;
+  font-size: 40px;
+  text-align: end;
+  color: antiquewhite;
+  font-family: sans-serif;
+  font-weight: 500;
 }
 
 .tenantwrapper--min2 {
-    height: 50%;
-    background-color: #28313f;
-    border-radius: 10px;
-    display: flex;
+  height: 50%;
+  background-color: #28313f;
+  border-radius: 10px;
+  display: flex;
 }
 
 .side--color1 {
-    background-color: #8e8f92;
-    height: 100%;
-    width: 25%;
-    border-radius: 10px;
+  background-color: #8e8f92;
+  height: 100%;
+  width: 25%;
+  border-radius: 10px;
 }
 
 .tenantwrapper--three {
-    grid-column: 3;
-    grid-row: 1;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
+  grid-column: 3;
+  grid-row: 1;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-
 @media screen and (max-width: 800px) {
+  .tenantcontainer--one {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr;
+    height: auto;
+    gap: 1rem;
+  }
 
-    .tenantcontainer--one {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        height: auto;
-        gap: 1rem;
-    }
+  .tenantwrapper--one {
+    grid-column: span 2;
+  }
 
-    .tenantwrapper--one {
-        grid-column: span 2;
-        grid-row: 1;
-    }
+  .tenantwrapper--one img {
+    height: 10rem;
+  }
 
-    .tenantwrapper--two {
-        grid-column: 1;
-        grid-row: 2;
-    }
+  .tenantwrapper--two {
+    grid-column: 1;
+    grid-row: 2;
 
-    .tenantwrapper--three {
-        grid-column: 2;
-        grid-row: 2;
-    }
+    height: 20rem;
+  }
 
-}    
+  .tenantwrapper--three {
+    grid-column: 2;
+    grid-row: 2;
+
+    height: 20rem;
+  }
+}

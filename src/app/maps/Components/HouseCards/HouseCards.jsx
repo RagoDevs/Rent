@@ -26,7 +26,7 @@ export default function HouseCards() {
                 </div>
                 <div className="maps--card">
                     <img src="/Assets/house.jpg" alt="" />
-                    <div class="location--title">
+                    <div className="location--title">
                         <h3>Kivule</h3>
                         <h4>Block A, House A</h4>
                     </div>

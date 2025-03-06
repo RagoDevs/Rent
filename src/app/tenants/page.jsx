@@ -6,25 +6,29 @@ import Header from "@/Components/Topnav/header";
 import TenantsCount from './TenantsCount/TenantsCount';
 import TenantsTable from './TenantsTable/TenantsTable';
 
-export default function Tenants () {
-    return ( 
+export default function Tenants() {
+    return (
         <>
-         <div className="tenants">
-                        <div className="topnav">
-                            <Header />
+            <div className="tenants">
+                <div className="topnav">
+                    <Header />
+                </div>
+                <div className="tenants-container">
+                    <div className="tenants-wrapper">
+                        <div className="sidenav">
+                            <Sidebar />
                         </div>
-                        <div className="tenants-container">
-                            <div className="tenants-wrapper">
-                                <div className="sidenav">
-                                    <Sidebar />
-                                </div>
-                                <div className="tenants-main">
-                                    <TenantsCount />
-                                    <TenantsTable />
-                                </div>
+                        <div className="tenants-main">
+                            <div className="tenants-count">
+                                <TenantsCount />
+                            </div>
+                            <div className="tenants-table-bg">
+                                <TenantsTable />
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         </>
     )
 }

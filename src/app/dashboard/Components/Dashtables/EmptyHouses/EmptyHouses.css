@@ -3,6 +3,7 @@
     height: 70%;
     background-color: #242a36;
     border-radius: 10px;
+    
 }
 
 ::-webkit-scrollbar {
@@ -28,7 +29,7 @@
 
 .empty-table table {
     width: 89%;
-    margin: 1rem 2rem;
+    margin: 1rem 1rem;
 }
 
 .dashwrapper-area1 table tr {

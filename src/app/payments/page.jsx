@@ -19,8 +19,12 @@ export default function Payments() {
                             <Sidebar />
                         </div>
                         <div className="payments-main">
-                            <UpcomingPay />
-                            <PayHistory />
+                            <div className="upcoming">
+                                <UpcomingPay />
+                            </div>
+                            <div className="history">
+                                <PayHistory />
+                            </div>
                         </div>
                     </div>
                 </div>
