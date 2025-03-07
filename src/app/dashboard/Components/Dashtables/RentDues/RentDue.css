@@ -35,3 +35,9 @@
     font-weight: 500;
     font-family: monospace;
 }
+
+@media screen and (max-width: 800px){
+    .rent-dues {
+        border-bottom: 1px solid white;
+    }
+}

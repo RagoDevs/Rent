@@ -124,14 +124,27 @@
   .tenantwrapper--two {
     grid-column: 1;
     grid-row: 2;
+  }
 
-    height: 20rem;
+  .tenantwrapper--min1, 
+  .tenantwrapper--min2 {
+    height: 6rem;
+
+  }
+
+  .tenantwrapper--min1 h3, 
+  .tenantwrapper--min2 h3 {
+    font-size: 16px;
+  }
+
+  .tenantwrapper--min1 h4, 
+  .tenantwrapper--min2 h4 {
+    font-size: 21px;
   }
 
   .tenantwrapper--three {
     grid-column: 2;
     grid-row: 2;
 
-    height: 20rem;
   }
 }
