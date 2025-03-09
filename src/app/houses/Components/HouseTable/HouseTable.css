@@ -43,25 +43,44 @@
   background-color: #1e242e;
   padding: 0 0.8rem 0.8rem;
   border-radius: 10px;
-  overflow: auto;
 }
 
 .house--table table {
   width: 100%;
-  min-width: 100%;
+  min-width: 500px;
   border-spacing: 0 1.2rem;
+}
+
+.house--table thead {
+  position: sticky;
+  top: 0;
+}
+
+.house--table table thead tr {
+  height: 2.8rem;
+  border-radius: 16px;
+
+}
+.house--table table thead td{
+  background-color: #113d85;
+  color: #a6a9ad;
+  font-family: sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  border-radius: 8px;
 }
 
 .house--table table tr {
   width: 100%;
   text-align: center;
-  height: 4.6rem;
+  height: 4rem;
   cursor: pointer;
 }
 
-.house--table td {
+.house--table table td {
   background-color: #28313f;
   color: aliceblue;
+  padding: 10px;
 }
 
 .house--table table h4 {

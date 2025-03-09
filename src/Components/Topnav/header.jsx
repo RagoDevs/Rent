@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Sidebar from '../SideBar/Sidebar';
 import './Header.css'
+import { useAuth } from '../Require/AuthProvider';
 
 export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
@@ -10,6 +11,8 @@ export default function Header() {
     const handleClick = () => {
         setIsVisible(!isVisible)
     }
+
+    const { signout } = useAuth();
     return (
         <>
             <div className="header">
@@ -18,7 +21,7 @@ export default function Header() {
                     <h2>Pango</h2>
                 </div>
                 <div className="header--right">
-                    <div className="lg-menu">
+                    <div className="lg-menu" onClick={signout}>
                         <img src="/Assets/exit.png" alt="" />
                         <h2>LOGOUT</h2>
                     </div>

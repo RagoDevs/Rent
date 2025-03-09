@@ -1,9 +1,7 @@
 'use client';
 
-import Login from "./Login/page";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <Login />
-  )
+    redirect('/Login')
 }

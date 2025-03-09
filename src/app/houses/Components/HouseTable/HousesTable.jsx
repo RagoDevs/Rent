@@ -19,7 +19,16 @@ export default function HousesTable() {
                     </div>
                 </div>
                 <div className="house--table">
+                    
                     <table>
+                        <thead>
+                            <tr>
+                                <td>Location</td>
+                                <td>Block</td>
+                                <td>House</td>
+                                <td>Occupier</td>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
                                 <td><h4>Kivule</h4></td>

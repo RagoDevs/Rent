@@ -38,6 +38,7 @@
   height: 788px;
   grid-column: 1;
   background-color: #202833;
+  overflow-x: auto;
 }
 
 .housemain-container-two {
@@ -67,13 +68,22 @@
 
 @media screen and (max-width: 930px) {
   .house-main {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     gap: 1rem;
   }
 
   .housemain-container-one {
+    grid-column: 1;
+    grid-row: 1;
     height: auto;
+    overflow-x: auto;
+  }
+
+  .housemain-container-two {
+    grid-column: 1;
+    grid-row: 2;
   }
 }
 

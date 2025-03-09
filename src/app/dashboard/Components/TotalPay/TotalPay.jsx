@@ -6,7 +6,7 @@ export default function TotalPay() {
         <>
             <div className="dashbottom-wrapper1">
                 <div className="totalpay--header">
-                    <img src="/images/pay.png" alt="" />
+                    <img src="/Assets/pay.png" alt="" />
                         <h2>Total Payment</h2>
                 </div>
                 <div className="pay--amount">
