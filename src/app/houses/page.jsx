@@ -5,10 +5,12 @@ import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import HousesTable from './Components/HouseTable/HousesTable';
 import HouseDetails from './Components/HouseDetails/HouseDetails';
+import { AuthProvider } from '@/Components/Require/AuthProvider';
 
 export default function Houses() {
     return (
         <>
+        <AuthProvider>
             <div className="houses">
                 <div className="topnav">
                     <Header />
@@ -29,6 +31,7 @@ export default function Houses() {
                     </div>
                 </div>
             </div>
+            </AuthProvider>
         </>
     )
 }

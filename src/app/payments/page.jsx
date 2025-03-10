@@ -5,30 +5,33 @@ import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import UpcomingPay from './Components/PaymentData/UpcomingTable';
 import PayHistory from './Components/PayHistory/PayHistory';
+import { AuthProvider } from '@/Components/Require/AuthProvider';
 
 export default function Payments() {
     return (
-        <>
-            <div className="payments">
-                <div className="topnav">
-                    <Header />
-                </div>
-                <div className="payments-container">
-                    <div className="payments-wrapper">
-                        <div className="sidenav">
-                            <Sidebar />
-                        </div>
-                        <div className="payments-main">
-                            <div className="upcoming">
-                                <UpcomingPay />
+        <AuthProvider>
+            <>
+                <div className="payments">
+                    <div className="topnav">
+                        <Header />
+                    </div>
+                    <div className="payments-container">
+                        <div className="payments-wrapper">
+                            <div className="sidenav">
+                                <Sidebar />
                             </div>
-                            <div className="history">
-                                <PayHistory />
+                            <div className="payments-main">
+                                <div className="upcoming">
+                                    <UpcomingPay />
+                                </div>
+                                <div className="history">
+                                    <PayHistory />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </>
+        </AuthProvider>
     )
 }
