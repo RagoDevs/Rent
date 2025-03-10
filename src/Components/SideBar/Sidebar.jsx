@@ -4,9 +4,13 @@ import './Sidebar.css'
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from '../Require/AuthProvider';
 
 export default function Sidebar() {
+
     const pathname = usePathname();
+    const { signout } = useAuth();
+
     return (
         <>
             <div className="sidebar">
@@ -63,6 +67,16 @@ export default function Sidebar() {
                                 Maps
                             </Link>
                         </li>
+                        <div className="log--out" onClick={signout}>
+                            <li className={pathname === '/maps' ? 'active' : ''}>
+                                <img
+                                    src="/Assets/exit.png"
+                                    alt=""
+                                />
+                                LogOut
+
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

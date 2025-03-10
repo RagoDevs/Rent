@@ -5,12 +5,12 @@ import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import HousesTable from './Components/HouseTable/HousesTable';
 import HouseDetails from './Components/HouseDetails/HouseDetails';
-import { AuthProvider } from '@/Components/Require/AuthProvider';
+import { RequireAuth } from '@/Components/Require/Require';
 
 export default function Houses() {
     return (
         <>
-        <AuthProvider>
+        <RequireAuth>
             <div className="houses">
                 <div className="topnav">
                     <Header />
@@ -31,7 +31,7 @@ export default function Houses() {
                     </div>
                 </div>
             </div>
-            </AuthProvider>
+            </RequireAuth>
         </>
     )
 }

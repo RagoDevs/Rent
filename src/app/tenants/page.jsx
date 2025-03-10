@@ -5,11 +5,11 @@ import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import TenantsCount from './TenantsCount/TenantsCount';
 import TenantsTable from './TenantsTable/TenantsTable';
-import { AuthProvider } from '@/Components/Require/AuthProvider';
+import { RequireAuth } from '@/Components/Require/Require';
 
 export default function Tenants() {
     return (
-        <AuthProvider>
+        <RequireAuth>
             <>
                 <div className="tenants">
                     <div className="topnav">
@@ -32,6 +32,6 @@ export default function Tenants() {
                     </div>
                 </div>
             </>
-        </AuthProvider>
+        </RequireAuth>
     )
 }

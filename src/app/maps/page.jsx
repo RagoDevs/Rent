@@ -5,11 +5,11 @@ import './maps.css'
 import Header from '@/Components/Topnav/header';
 import HouseCards from './Components/HouseCards/HouseCards';
 import HouseLocation from './Components/HouseLocation/HouseLocation';
-import { AuthProvider } from '@/Components/Require/AuthProvider';
+import { RequireAuth } from '@/Components/Require/Require';
 
 export default function Maps() {
     return (
-        <AuthProvider>
+        <RequireAuth>
             <>
                 <div className="maps">
                     <div className="topnav">
@@ -28,6 +28,6 @@ export default function Maps() {
                     </div>
                 </div>
             </>
-        </AuthProvider>
+        </RequireAuth>
     )
 }

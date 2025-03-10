@@ -5,11 +5,11 @@ import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
 import UpcomingPay from './Components/PaymentData/UpcomingTable';
 import PayHistory from './Components/PayHistory/PayHistory';
-import { AuthProvider } from '@/Components/Require/AuthProvider';
+import { RequireAuth } from '@/Components/Require/Require';
 
 export default function Payments() {
     return (
-        <AuthProvider>
+        <RequireAuth>
             <>
                 <div className="payments">
                     <div className="topnav">
@@ -32,6 +32,6 @@ export default function Payments() {
                     </div>
                 </div>
             </>
-        </AuthProvider>
+        </RequireAuth>
     )
 }

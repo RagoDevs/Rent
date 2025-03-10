@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 export default function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [ loading, setLoading ] = useState(true)
     const router = useRouter();
     const show = '/Assets/show.png'
     const eyeSlashIcon = '/Assets/hide.png'
@@ -36,11 +37,11 @@ export default function Login() {
     };
 
     useEffect(() => {
-        if (isTokenValid()) {
+        if (isTokenValid() && router.pathname !== '/dashboard') {
 
             router.push('/dashboard');
         }
-    },);
+    },[]);
 
     const [loginError, setLoginError] = useState(null);
     let auth = useAuth();

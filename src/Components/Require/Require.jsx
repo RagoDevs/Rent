@@ -1,24 +1,26 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "./AuthProvider"; 
+import { useAuth } from "./AuthProvider";
 
-export  function RequireAuth({ children }) {
+export function RequireAuth({ children }) {
   const auth = useAuth();
   const router = useRouter();
-  const [ loading, setLoading ] = useState(true)
+  const [loading, setLoading ] = useState(true);
+
 
   useEffect(() => {
+    if (auth.token === null) return
     if (!auth.token) {
-      router.push("/Login"); 
+      router.replace("/Login");
     } else {
-      setLoading(false);
+      setLoading(false)
     }
   }, [auth.token, router]);
 
-  if (loading || !auth.token) return null; 
+  if (loading) return <div>Loading....</div>
+  
 
   return children;
 }

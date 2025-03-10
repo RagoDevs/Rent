@@ -1,22 +1,15 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState} from "react";
 import { useRouter } from "next/navigation";
 import { base_url } from "../constant";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem('rentSiteToken') || '' );
   const [err, setErr] = useState("");
   const router = useRouter();
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("siteToken");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
 
   const signin = async (email, password) => {
 
@@ -38,8 +31,8 @@ export function AuthProvider({ children }) {
 
         if (token) {
           setToken(token);
-          localStorage.setItem("siteToken", token);
-          localStorage.setItem('siteExpiry', expire)
+          localStorage.setItem("rentSiteToken", token);
+          localStorage.setItem('rentSiteExpiry', expire)
           router.push("/dashboard");
         }
       } else {
@@ -53,10 +46,10 @@ export function AuthProvider({ children }) {
   };
 
   const signout = () => {
-    setToken("");
-    localStorage.removeItem("siteToken");
-    localStorage.removeItem('siteExpiry');
-    router.push("/Login");
+    setToken(null);
+    localStorage.removeItem("rentSiteToken");
+    localStorage.removeItem('rentSiteExpiry');
+    router.replace("/Login");
   };
 
   const value = { token, signin, signout, err };

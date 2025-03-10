@@ -44,10 +44,14 @@
   color: rgb(12, 216, 138);
 }
 
+.log--out {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .sidebar {
     position: absolute;
-    height: 27rem;
+    height: 28rem;
     top: 5.5rem;
     right: 1rem;
     z-index: 100;
@@ -72,5 +76,9 @@
   .sidebar li img {
     height: 2rem;
     object-fit: cover;
+  }
+
+  .log--out {
+    display: contents;
   }
 }
