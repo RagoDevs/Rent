@@ -1,15 +1,31 @@
 "use client";
 
-import { createContext, useContext, useState} from "react";
+import { createContext, useContext, useEffect, useState} from "react";
 import { useRouter } from "next/navigation";
 import { base_url } from "../constant";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(localStorage.getItem('rentSiteToken') || '' );
+  const [token, setToken] = useState(undefined);
   const [err, setErr] = useState("");
   const router = useRouter();
+
+  useEffect(() =>{
+    const storedToken = localStorage.getItem('rentSiteToken')
+    if(storedToken) setToken(storedToken || null)
+  },[]);
+
+  useEffect(() => {
+    const syncAuth = (event) => {
+      if (event.key === "rentSiteToken") {
+        setToken(event.newValue || null);
+      }
+    };
+
+    window.addEventListener("storage", syncAuth);
+    return () => window.removeEventListener("storage", syncAuth);
+  }, []);
 
   const signin = async (email, password) => {
 
@@ -46,7 +62,7 @@ export function AuthProvider({ children }) {
   };
 
   const signout = () => {
-    setToken(null);
+    setToken(undefined);
     localStorage.removeItem("rentSiteToken");
     localStorage.removeItem('rentSiteExpiry');
     router.replace("/Login");

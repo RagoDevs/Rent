@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation';
 export default function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
-    const [ loading, setLoading ] = useState(true)
     const router = useRouter();
     const show = '/Assets/show.png'
     const eyeSlashIcon = '/Assets/hide.png'
@@ -25,8 +24,8 @@ export default function Login() {
 
 
     const isTokenValid = () => {
-        const token = localStorage.getItem('siteToken');
-        const expiryTime = localStorage.getItem('siteExpiry');
+        const token = localStorage.getItem('rentSiteToken');
+        const expiryTime = localStorage.getItem('rentSiteExpiry');
 
         if (!token || !expiryTime) {
             return false;
