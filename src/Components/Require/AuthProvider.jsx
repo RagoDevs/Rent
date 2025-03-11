@@ -7,25 +7,15 @@ import { base_url } from "../constant";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(undefined);
+  const [token, setToken] = useState(null);
   const [err, setErr] = useState("");
   const router = useRouter();
 
   useEffect(() =>{
     const storedToken = localStorage.getItem('rentSiteToken')
-    if(storedToken) setToken(storedToken || null)
+    if(storedToken) setToken(storedToken)
   },[]);
 
-  useEffect(() => {
-    const syncAuth = (event) => {
-      if (event.key === "rentSiteToken") {
-        setToken(event.newValue || null);
-      }
-    };
-
-    window.addEventListener("storage", syncAuth);
-    return () => window.removeEventListener("storage", syncAuth);
-  }, []);
 
   const signin = async (email, password) => {
 
@@ -62,7 +52,7 @@ export function AuthProvider({ children }) {
   };
 
   const signout = () => {
-    setToken(undefined);
+    setToken(null);
     localStorage.removeItem("rentSiteToken");
     localStorage.removeItem('rentSiteExpiry');
     router.replace("/Login");
