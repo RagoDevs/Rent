@@ -1,0 +1,67 @@
+.forgot-bg {
+  height: 100dvb;
+  width: 100dvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0.5) 50%
+  );
+}
+
+.forgot-container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 400px;
+  color: #fff;
+}
+
+.logo {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.email-wrapper input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background: rgba(235, 230, 230, 0.1);
+  color: #fff;
+  font-size: 18px;
+}
+
+.email-wrapper input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: rgb(57, 57, 243);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  
+}
+
+.btn:hover {
+  background: #fff;
+  color: blue;
+}
+
+.forgot-note {
+    font-family: sans-serif;
+    color: rgb(192, 199, 199);
+}

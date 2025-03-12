@@ -1,11 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-.login-bg {
+.reset-bg {
   height: 100dvb;
   width: 100dvw;
   display: flex;
@@ -13,13 +6,12 @@
   justify-content: center;
   background: radial-gradient(
     circle,
-    rgba(0, 0, 0, 0) 55%,
-    rgba(0, 0, 0, 0.5) 60%
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0.5) 50%
   );
-  background: url("/Assets/loginbg.jpg") no-repeat center center/cover;
 }
 
-.login-container {
+.reset-container {
   background: rgba(0, 0, 0, 0.7);
   padding: 30px;
   border-radius: 10px;
@@ -33,28 +25,13 @@
   margin-bottom: 20px;
 }
 
-.email-wrapper input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 16px;
-}
-
-.email-wrapper input:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.2);
-}
-
 .password-wrapper {
   width: 100%;
   border-radius: 5px;
   display: flex;
   background: rgba(255, 255, 255, 0.1);
   height: 2.9rem;
+  margin-bottom: 1.4rem;
 }
 
 .password-wrapper input {
@@ -65,15 +42,14 @@
   border-radius: 5px;
   color: #fff;
   font-size: 16px;
-  background: transparent !important; 
+  background: transparent !important;
   outline: none !important;
 }
 
 .password-wrapper img {
   height: 1.7rem;
   cursor: pointer;
-  margin: 0.8rem .4rem 0 0;
-  
+  margin: 0.8rem 0.4rem 0 0;
 }
 
 .password-wrapper input:focus {
@@ -91,7 +67,7 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .btn:hover {
@@ -99,21 +75,7 @@
   color: blue;
 }
 
-.links {
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 29px;
-  font-size: 15px;
-}
-
-.links p {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-.links p:hover {
-  color: #ff3366;
-  cursor: pointer;
+.forgot-note {
+  font-family: sans-serif;
+  color: rgb(192, 199, 199);
 }
