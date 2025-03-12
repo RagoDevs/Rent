@@ -69,7 +69,7 @@ export default function Login() {
             }
         },
     });
-
+    const handleShowForgotPassword = () => { router.push('/forgotpassword')}                                          
     return (
         <>
             <ToastContainer />
@@ -114,9 +114,7 @@ export default function Login() {
                     {loginError && <div className="login-error">{loginError}</div>}
                     <button className="btn" type="submit">Login</button>
                     <div className="links">
-                        <Link href="/forgotpassword">
-                            Forgot Password?
-                        </Link | <p>Create Account</p>
+                        <p onClick={handleShowForgotPassword}>Forgot Password </p> | <p>Create Account</p>
                     </div>
                 </form>
             </div>
