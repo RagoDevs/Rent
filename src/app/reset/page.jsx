@@ -31,7 +31,7 @@ function ResetForm() {
 
     try {
       const res = await fetch(`${base_url}/v1/admins/password/reset`, {
-        method: 'POST',
+        method: 'PUT',
         headers: { "Content-Type": 'application/json' },
         body: JSON.stringify({ token, password }),
       });
