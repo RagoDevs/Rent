@@ -9,7 +9,6 @@ import { RequireAuth } from "@/Components/Require/Require";
 export default function Dashboard() {
     return (
         <RequireAuth>
-        <>
             <div className="dashboard">
                 <div className="topnav">
                     <Header />
@@ -25,7 +24,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </>
         </RequireAuth>
     )
 }
