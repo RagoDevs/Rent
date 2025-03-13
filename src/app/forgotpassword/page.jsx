@@ -30,7 +30,8 @@ export default function ForgotPassword() {
                 body: JSON.stringify({ email }),
             });
 
-            if (response.status === 200) { 
+            if (response.status >= 200 && response.status < 300)
+                { 
                 setSubmitted(true); 
                 success.toast('Email Submitted')
                 setMessage('Link sent to your email');
