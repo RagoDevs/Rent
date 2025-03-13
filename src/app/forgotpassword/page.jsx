@@ -3,7 +3,7 @@ import Image from "next/image";
 import './forgot.css';
 import { useState } from "react";
 import { base_url } from "@/Components/constant";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ForgotPassword() {
@@ -33,7 +33,7 @@ export default function ForgotPassword() {
             if (response.status >= 200 && response.status < 300)
                 { 
                 setSubmitted(true); 
-                success.toast('Email Submitted')
+                toast.success('Email Submitted');
                 setMessage('Link sent to your email');
             } else {
                 setMessage('Something went wrong');
