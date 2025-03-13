@@ -56,6 +56,7 @@ export default function ForgotPassword() {
                 <div className="forgot-container">
                     <div className="logo">Pango</div>
                     <form onSubmit={handleSubmit}>
+                        <p>Enter your email</p>
                         <div className="email-wrapper">
                             <input
                                 type="email"

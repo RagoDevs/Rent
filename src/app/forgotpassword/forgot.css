@@ -25,6 +25,11 @@
   margin-bottom: 20px;
 }
 
+.forgot-container p {
+  text-align: start;
+  color: #dad5d5;
+}
+
 .email-wrapper input {
   width: 100%;
   padding: 10px;

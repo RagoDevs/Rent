@@ -113,7 +113,7 @@
   margin: 0 5px;
 }
 
-.links p:hover {
+.links:hover {
   color: #ff3366;
   cursor: pointer;
 }
