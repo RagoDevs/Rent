@@ -5,7 +5,7 @@ import './reset.css';
 import Image from "next/image";
 import { base_url } from "@/Components/constant";
 import { useSearchParams } from "next/navigation";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 export const dynamic = "force-dynamic";
@@ -37,9 +37,9 @@ function ResetForm() {
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token, password }),
             });
-            if (res.status === 200) {
+            if (res.status >= 200 && res.status < 300){
                 setMessage('Password updated successfully!');
-                success.toast('Password updated successfully!')
+                toast.success('Password updated successfully!')
             } else {
                 setMessage('Failed to reset password');
             }
