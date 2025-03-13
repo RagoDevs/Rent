@@ -34,7 +34,7 @@ export default function Reset() {
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token, password }),
             });
-            if (response.status === 200) {
+            if (res.status === 200) {
                 setMessage('Password updated successfully!')
             }
         } catch (error) {
