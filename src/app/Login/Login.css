@@ -15,8 +15,7 @@
     circle,
     rgba(0, 0, 0, 0) 55%,
     rgba(0, 0, 0, 0.5) 60%
-  );
-  background: url("/Assets/loginbg.jpg") no-repeat center center/cover;
+  )
 }
 
 .login-container {

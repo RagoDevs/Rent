@@ -2,6 +2,7 @@
 
 import './Login.css';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '@/Components/Require/AuthProvider';
@@ -74,6 +75,12 @@ export default function Login() {
         <>
             <ToastContainer />
             <div className="login-bg">
+                <Image
+                                    src='/Assets/loginbg.jpg'
+                                    alt="forgot password"
+                                    fill
+                                    style={{ objectFit: 'cover', zIndex: -1 }}
+                                />
             <div className="login-container">
                 <div className="logo">Pango</div>
                 <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
@@ -116,7 +123,7 @@ export default function Login() {
                     <div className="links">
                     <Link href="/forgotpassword">
                                 Forgot Password?
-                            </Link> | <p>Create Account</p>
+                            </Link> 
                     </div>
                 </form>
             </div>
