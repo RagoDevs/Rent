@@ -1,5 +1,4 @@
 'use client';
-import Image from "next/image";
 import './forgot.css';
 import { useState } from "react";
 import { base_url } from "@/Components/constant";
@@ -41,6 +40,8 @@ export default function ForgotPassword() {
         } catch (error) {
             console.log('Error submitting', error);
             setMessage('Error submitting the request');
+            console.error('Error submitting:', error.message || error);
+
         }
     };
 
@@ -48,12 +49,6 @@ export default function ForgotPassword() {
         <>
         <ToastContainer />
             <div className="forgot-bg">
-                <Image
-                    src='/Assets/forgot-1.jpg'
-                    alt="forgot password"
-                    fill
-                    style={{ objectFit: 'cover', zIndex: -1 }}
-                />
                 <div className="forgot-container">
                     <div className="logo">Pango</div>
                     <form onSubmit={handleSubmit}>

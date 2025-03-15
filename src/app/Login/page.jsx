@@ -2,7 +2,6 @@
 
 import './Login.css';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '@/Components/Require/AuthProvider';
@@ -41,7 +40,7 @@ export default function Login() {
 
             router.push('/dashboard');
         }
-    },[]);
+    }, []);
 
     const [loginError, setLoginError] = useState(null);
     let auth = useAuth();
@@ -75,58 +74,58 @@ export default function Login() {
         <>
             <ToastContainer />
             <div className="login-bg">
-                <Image
-                                    src='/Assets/loginbg.jpg'
-                                    alt="forgot password"
-                                    fill
-                                    style={{ objectFit: 'cover', zIndex: -1 }}
-                                />
-            <div className="login-container">
-                <div className="logo">Pango</div>
-                <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
-                    <div className="email-wrapper">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name='email'
-                            value={formik.values.email}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            required
-                        />
-                    </div>
-                    {formik.touched.email && formik.errors.email ? (
-                        <div>{formik.errors.email}</div>) : null
-                    }
-                    <div className="password-wrapper">
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            name='password'
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            placeholder="Password"
-                            required
-                        />
-                        <img
-                            src={showPassword ? eyeSlashIcon : show}
-                            alt="Toggle Password Visibility"
-                            className="eye-icon"
-                            onClick={togglePasswordVisibility}
-                        />
-                    </div>
-                    {formik.touched.password && formik.errors.password ? (
-                        <div>{formik.errors.password}</div>) : null
-                    }
-                    {loginError && <div className="login-error">{loginError}</div>}
-                    <button className="btn" type="submit">Login</button>
-                    <div className="links">
-                    <Link href="/forgotpassword">
+                {/* <Image
+                    src='/Assets/loginbg.jpg'
+                    alt="forgot password"
+                    fill
+                    style={{ objectFit: 'cover', zIndex: -1 }}
+                /> */}
+                <div className="login-container">
+                    <div className="logo">Pango</div>
+                    <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
+                        <div className="email-wrapper">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                name='email'
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                required
+                            />
+                        </div>
+                        {formik.touched.email && formik.errors.email ? (
+                            <div>{formik.errors.email}</div>) : null
+                        }
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                name='password'
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="Password"
+                                required
+                            />
+                            <img
+                                src={showPassword ? eyeSlashIcon : show}
+                                alt="Toggle Password Visibility"
+                                className="eye-icon"
+                                onClick={togglePasswordVisibility}
+                            />
+                        </div>
+                        {formik.touched.password && formik.errors.password ? (
+                            <div>{formik.errors.password}</div>) : null
+                        }
+                        {loginError && <div className="login-error">{loginError}</div>}
+                        <button className="btn" type="submit">Login</button>
+                        <div className="links">
+                            <Link href="/forgotpassword">
                                 Forgot Password?
-                            </Link> 
-                    </div>
-                </form>
-            </div>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
 
         </>

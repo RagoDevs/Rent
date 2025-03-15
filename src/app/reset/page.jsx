@@ -56,12 +56,6 @@ function ResetForm() {
         <>
             <ToastContainer />
             <div className="reset-bg">
-                <Image
-                    src='/Assets/reset.jpg'
-                    alt="reset password"
-                    fill
-                    style={{ objectFit: 'cover', zIndex: -1 }}
-                />
                 <div className="reset-container">
                     <div className="logo">Pango</div>
                     {token ? (
