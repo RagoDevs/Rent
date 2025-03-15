@@ -39,7 +39,7 @@ function ActivateAccount() {
                     <div className="logo">Pango</div>
                     {token ? (
                         <form onSubmit={handleSubmit}>
-                            <button className="btn" type="submit">Reset Password</button>
+                            <button className="btn" type="submit">Activate Account</button>
                         </form>
                     ) : (
                         <p className="red-text">Invalid reset link</p>

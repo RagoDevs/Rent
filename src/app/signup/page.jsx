@@ -105,7 +105,7 @@ export default function signup() {
                                 onClick={togglePasswordVisibility}
                             />
                         </div>
-                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="submit">Create New Account</button>
                     </form>
                     {submitted && <div className="signup-note-1"><p>{message}</p></div>}
 

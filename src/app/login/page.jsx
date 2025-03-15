@@ -120,9 +120,12 @@ export default function Login() {
                         {loginError && <div className="login-error">{loginError}</div>}
                         <button className="btn" type="submit">Login</button>
                         <div className="links">
-                            <Link href="/forgotpassword">
+
+                            <Link className='link1' href="/forgotpassword">
                                 Forgot Password?
-                            </Link>
+                            </Link> |  <Link className='link2' href="/signup">
+                                Create Account
+                            </Link> 
                         </div>
                     </form>
                 </div>

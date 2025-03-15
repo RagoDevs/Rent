@@ -155,7 +155,16 @@
   margin: 0 5px;
 }
 
-.links:hover {
+.link1:hover {
   color: #ff3366;
   cursor: pointer;
+}
+
+.link2:hover {
+  color: rgb(5, 241, 5);
+  cursor: pointer;
+}
+
+.login-error {
+  color: red;
 }
