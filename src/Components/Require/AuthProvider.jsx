@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
     setToken(null);
     localStorage.removeItem("rentSiteToken");
     localStorage.removeItem('rentSiteExpiry');
-    router.replace("/Login");
+    router.replace("/login");
   };
 
   const value = { token, signin, signout, err };

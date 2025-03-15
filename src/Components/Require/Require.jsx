@@ -7,7 +7,7 @@ export function RequireAuth({ children }) {
   const router = useRouter();
 
   if (!auth.token ) {
-    router.replace("/Login");
+    router.replace("/login");
   }
 
 
