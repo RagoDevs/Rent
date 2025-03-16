@@ -9,12 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function ActivateAccount() {
     const [message, setMessage] = useState('');
+    const [isActivated, setIsActivated] = useState(false)
 
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
 
     const handleSubmit = async () => {
-    
+        e.preventDefault();
         try {
             const res = await fetch(`${base_url}/v1/admins/activate`, {
                 method: 'PUT',
@@ -24,6 +25,7 @@ function ActivateAccount() {
             if (res.status >= 200 && res.status < 300){
                 setMessage('Account activated successfully!');
                 toast.success('Account activated successfully!')
+                setIsActivated(true)
             } else {
                 setMessage('Failed to activate account');
             }
@@ -38,9 +40,13 @@ function ActivateAccount() {
                 <div className="activate-container">
                     <div className="logo">Pango</div>
                     {token ? (
-                        <form onSubmit={handleSubmit}>
-                            <button className="btn" type="submit">Activate Account</button>
-                        </form>
+                        !isActivated ? (
+                            <form onSubmit={handleSubmit}>
+                                <button className="btn" type="submit">Activate Account</button>
+                            </form>
+                        ) : (
+                            <p className="success-text">Account activated successfully!</p>
+                        )
                     ) : (
                         <p className="red-text">Invalid reset link</p>
                     )}
