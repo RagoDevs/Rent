@@ -58,7 +58,7 @@ function ActivateAccount() {
                     {token ? (
                         <>
                             {!isActivated && <ActivationForm token={token} onSuccess={handleActivationSuccess} />}
-                            {message && <p>{message}</p>}
+                            {message && <p style={{color: 'rgb(6, 215, 6)'}}>{message}</p>}
                         </>
                     ) : (
                         <p className="red-text">Invalid reset link</p>
