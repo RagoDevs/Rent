@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 function ActivateAccount() {
     const [message, setMessage] = useState('');
     const [isActivated, setIsActivated] = useState(false)
-
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
 
@@ -40,18 +39,17 @@ function ActivateAccount() {
                 <div className="activate-container">
                     <div className="logo">Pango</div>
                     {token ? (
-                        !isActivated ? (
-                            <form onSubmit={handleSubmit}>
-                                <button className="btn" type="submit">Activate Account</button>
-                            </form>
-                        ) : (
-                            <p className="success-text">Account activated successfully!</p>
-                        )
+                        <>
+                        <form onSubmit={handleSubmit}>
+                            <button className="btn" type="submit">Activate Account</button>
+                        </form>
+                        {isActivated && message && <p>{message}</p>}
+                        </>
                     ) : (
                         <p className="red-text">Invalid reset link</p>
                     )}
                     <div className="reset-note">
-                        {message && <p>{message}</p>}
+                        {!isActivated && message && <p>{message}</p>}
                     </div>
                 </div>
             </div>
