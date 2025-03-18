@@ -3,7 +3,7 @@
 import { Suspense, useState } from 'react';
 import './activate.css';
 import { base_url } from "@/Components/constant";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -41,6 +41,7 @@ function ActivateAccount() {
     const [isActivated, setIsActivated] = useState(false);
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
+    const router = useRouter();
 
     const handleActivationSuccess = (msg) => {
         setMessage(msg);
@@ -59,6 +60,7 @@ function ActivateAccount() {
                         <>
                             {!isActivated && <ActivationForm token={token} onSuccess={handleActivationSuccess} />}
                             {message && <p style={{color: 'rgb(6, 215, 6)'}}>{message}</p>}
+                            {isActivated && <button className="btn" onClick={() => router.push('/login')}>Login</button>}
                         </>
                     ) : (
                         <p className="red-text">Invalid reset link</p>
