@@ -7,13 +7,8 @@ import { useSearchParams } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-function ActivateAccount() {
-    const [message, setMessage] = useState('');
-    const [isActivated, setIsActivated] = useState(false)
-    const searchParams = useSearchParams();
-    const token = searchParams.get('token');
-
-    const handleSubmit = async () => {
+function ActivationForm({ token, onSuccess }) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const res = await fetch(`${base_url}/v1/admins/activate`, {
@@ -21,17 +16,39 @@ function ActivateAccount() {
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token }),
             });
-            if (res.status >= 200 && res.status < 300){
-                setMessage('Account activated successfully!');
-                toast.success('Account activated successfully!')
-                setIsActivated(true)
+            if (res.status >= 200 && res.status < 300) {
+                toast.success('Account activated successfully!');
+                onSuccess('Account activated successfully!');
             } else {
-                setMessage('Failed to activate account');
+                toast.error('Failed to activate account');
+                onSuccess('Failed to activate account');
             }
         } catch (error) {
-            setMessage('Something went wrong');
+            toast.error('Something went wrong');
+            onSuccess('Something went wrong');
         }
     };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <button className="btn" type="submit">Activate Account</button>
+        </form>
+    );
+}
+
+function ActivateAccount() {
+    const [message, setMessage] = useState('');
+    const [isActivated, setIsActivated] = useState(false);
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
+
+    const handleActivationSuccess = (msg) => {
+        setMessage(msg);
+        if (msg === 'Account activated successfully!') {
+            setIsActivated(true);
+        }
+    };
+
     return (
         <>
             <ToastContainer />
@@ -40,22 +57,16 @@ function ActivateAccount() {
                     <div className="logo">Pango</div>
                     {token ? (
                         <>
-                        <form onSubmit={handleSubmit}>
-                            <button className="btn" type="submit">Activate Account</button>
-                        </form>
-                        {isActivated && message && <p>{message}</p>}
+                            {!isActivated && <ActivationForm token={token} onSuccess={handleActivationSuccess} />}
+                            {message && <p>{message}</p>}
                         </>
                     ) : (
                         <p className="red-text">Invalid reset link</p>
                     )}
-                    <div className="reset-note">
-                        {!isActivated && message && <p>{message}</p>}
-                    </div>
                 </div>
             </div>
         </>
-    )
-
+    );
 }
 
 export default function Activate() {
@@ -63,5 +74,5 @@ export default function Activate() {
         <Suspense fallback={<div>Loading...</div>}>
             <ActivateAccount />
         </Suspense>
-    )
+    );
 }
