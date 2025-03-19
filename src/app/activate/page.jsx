@@ -16,10 +16,16 @@ function ActivationForm({ token, onSuccess }) {
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token }),
             });
+
             if (res.status >= 200 && res.status < 300) {
                 toast.success('Account activated successfully!');
                 onSuccess('Account activated successfully!');
-            } else {
+
+            }else if (res.status == 500) {
+                 onSuccess('Failed to activate account');
+                 toast.error('Failed to activate account');
+            }
+            else {
                 toast.error('Your activation link is invalid or has expired');
                 onSuccess('Your activation link is invalid or has expired');
             }
