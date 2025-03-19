@@ -37,11 +37,16 @@ function ResetForm() {
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token, password }),
             });
+            
             if (res.status >= 200 && res.status < 300){
                 setMessage('Password updated successfully!');
                 toast.success('Password updated successfully!')
-            } else {
-                setMessage('Failed to reset password');
+
+            }else if (res.status == 500) {
+                 setMessage('Failed to reset password');
+
+            }else {
+                setMessage('Your reset link is invalid or has expired');
             }
         } catch (error) {
             setMessage('Something went wrong');
@@ -58,7 +63,7 @@ function ResetForm() {
             <div className="reset-bg">
                 <div className="reset-container">
                     <div className="logo">Pango</div>
-                    {token ? (
+                    { (token && token.length === 26) ? (
                         <form onSubmit={handleSubmit}>
                             <div className="password-wrapper">
                                 <input
