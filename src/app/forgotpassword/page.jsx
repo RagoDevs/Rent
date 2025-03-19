@@ -38,9 +38,7 @@ export default function ForgotPassword() {
                 setMessage('Something went wrong');
             }
         } catch (error) {
-            console.log('Error submitting', error);
             setMessage('Error submitting the request');
-            console.error('Error submitting:', error.message || error);
 
         }
     };

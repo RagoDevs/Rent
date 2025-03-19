@@ -57,7 +57,6 @@ export default function Login() {
 
         }),
         onSubmit: async values => {
-            console.log('email', values.email)
             try {
                 await auth.signin(values.email, values.password);
 

@@ -67,7 +67,6 @@ export default function signup() {
                 setMessage(errorData.error || 'Something went wrong');
             }
         } catch (error) {
-            console.log('Error submitting', error);
             setMessage('Error submitting the request');
         }
     };
