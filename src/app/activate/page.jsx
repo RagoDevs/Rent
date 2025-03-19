@@ -20,8 +20,8 @@ function ActivationForm({ token, onSuccess }) {
                 toast.success('Account activated successfully!');
                 onSuccess('Account activated successfully!');
             } else {
-                toast.error('Failed to activate account');
-                onSuccess('Failed to activate account');
+                toast.error('Your activation link is invalid or has expired');
+                onSuccess('Your activation link is invalid or has expired');
             }
         } catch (error) {
             toast.error('Something went wrong');
@@ -56,14 +56,14 @@ function ActivateAccount() {
             <div className="activate-bg">
                 <div className="activate-container">
                     <div className="logo">Pango</div>
-                    {token ? (
+                    {(token && token.length === 26 )? (
                         <>
                             {!isActivated && <ActivationForm token={token} onSuccess={handleActivationSuccess} />}
                             {message && <p style={{color: 'rgb(6, 215, 6)'}}>{message}</p>}
                             {isActivated && <button className="btn" onClick={() => router.push('/login')}>Login</button>}
                         </>
                     ) : (
-                        <p className="red-text">Invalid reset link</p>
+                        <p className="red-text">Invalid activation link</p>
                     )}
                 </div>
             </div>
