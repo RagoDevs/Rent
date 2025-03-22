@@ -9,7 +9,6 @@ import { RequireAuth } from '@/Components/Require/Require';
 
 export default function Houses() {
     return (
-        <>
         <RequireAuth>
             <div className="houses">
                 <div className="topnav">
@@ -32,6 +31,5 @@ export default function Houses() {
                 </div>
             </div>
             </RequireAuth>
-        </>
     )
 }
