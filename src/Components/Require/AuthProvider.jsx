@@ -8,12 +8,16 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
+  const [isloading, setIsLoading] = useState(true)
   const [err, setErr] = useState("");
   const router = useRouter();
 
   useEffect(() =>{
     const storedToken = localStorage.getItem('rentSiteToken')
-    if(storedToken) setToken(storedToken)
+    if(storedToken) {
+       setToken(storedToken)
+    }
+    setIsLoading(false)
   },[]);
 
 
@@ -58,7 +62,7 @@ export function AuthProvider({ children }) {
     router.replace("/login");
   };
 
-  const value = { token, signin, signout, err };
+  const value = { token, signin, signout, err, isloading };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

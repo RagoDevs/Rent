@@ -30,6 +30,6 @@ export default function Houses() {
                     </div>
                 </div>
             </div>
-            </RequireAuth>
+        </RequireAuth>
     )
 }
