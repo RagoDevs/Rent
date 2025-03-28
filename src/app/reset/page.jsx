@@ -62,7 +62,7 @@ function ResetForm() {
             <ToastContainer />
             <div className="reset-bg">
                 <div className="reset-container">
-                    <div className="logo">Pango</div>
+                    <div className="logo">Rent</div>
                     { (token && token.length === 26) ? (
                         <form onSubmit={handleSubmit}>
                             <div className="password-wrapper">

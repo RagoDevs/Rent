@@ -80,7 +80,7 @@ export default function Login() {
                     style={{ objectFit: 'cover', zIndex: -1 }}
                 /> */}
                 <div className="login-container">
-                    <div className="logo">Pango</div>
+                    <div className="logo">Rent</div>
                     <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
                         <div className="email-wrapper">
                             <input

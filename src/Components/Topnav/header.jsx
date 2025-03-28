@@ -18,7 +18,7 @@ export default function Header() {
             <div className="header">
                 <div className="header--left">
                     <img src="/Assets/logo.png" alt="" />
-                    <h2>Pango</h2>
+                    <h2>Rent</h2>
                 </div>
                 <div className="header--right">
                     <div className="lg-menu" onClick={signout}>

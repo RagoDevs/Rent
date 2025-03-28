@@ -75,7 +75,7 @@ export default function signup() {
             <ToastContainer />
             <div className="signup-bg">
                 <div className="signup-container">
-                    <div className="logo">Pango</div>
+                    <div className="logo">Rent</div>
                     <form onSubmit={handleSubmit}>
                         <p>Create new account</p>
                         <div className="email-wrapper">

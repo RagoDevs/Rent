@@ -48,7 +48,7 @@ export default function ForgotPassword() {
         <ToastContainer />
             <div className="forgot-bg">
                 <div className="forgot-container">
-                    <div className="logo">Pango</div>
+                    <div className="logo">Rent</div>
                     <form onSubmit={handleSubmit}>
                         <p>Enter your email</p>
                         <div className="email-wrapper">

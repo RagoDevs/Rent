@@ -61,7 +61,7 @@ function ActivateAccount() {
             <ToastContainer />
             <div className="activate-bg">
                 <div className="activate-container">
-                    <div className="logo">Pango</div>
+                    <div className="logo">Rent</div>
                     {(token && token.length === 26 )? (
                         <>
                             {!isActivated && <ActivationForm token={token} onSuccess={handleActivationSuccess} />}
