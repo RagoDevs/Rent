@@ -3,37 +3,26 @@
 import { useEffect, useState } from 'react';
 import './TenantsTable.css'
 import { useRouter } from 'next/navigation';
-import { base_url, checkExpiry, getToken } from '@/Components/constant';
+import { checkExpiry, fetchData, getToken } from '@/Components/constant';
 
 export default function TenantsTable() {
     const [tenants, setTenants] = useState([])
     const router = useRouter();
+    const endpoint = '/v1/auth/tenants'
 
     useEffect(() => {
-        if (checkExpiry()) {
+        if(checkExpiry()) {
             router.push('/login')
         }
     }, [checkExpiry])
 
     useEffect(() => {
-        const fetchTenants = async () => {
-            try {
-                const response = await fetch(`${base_url}/v1/auth/tenants`, {
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                const data = await response.json()
-                setTenants(data)
-            } catch (error) {
-                console.log('error occured')
-            }
+        if(!checkExpiry()) {
+            fetchData(endpoint).then((data) => {
+                setTenants(data);
+            })
         }
-        if (!checkExpiry()) {
-            fetchTenants()
-        }
-    }, [checkExpiry, getToken])
+    }, [endpoint, checkExpiry, getToken])
     return (
         <>
             <div className="tenantcontainer--two">

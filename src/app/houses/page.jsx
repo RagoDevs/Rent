@@ -8,12 +8,14 @@ import HouseDetails from './Components/HouseDetails/HouseDetails';
 import { RequireAuth } from '@/Components/Require/Require';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { base_url, checkExpiry, getToken } from '@/Components/constant';
+import { checkExpiry, fetchData, getToken } from '@/Components/constant';
+
 
 export default function Houses() {
     const [houses, setHouses] = useState();
     const [selectedHouse, setSelectedHouse] = useState()
     const router = useRouter();
+    const endpoint = '/v1/auth/houses'
 
     useEffect(() => {
         if(checkExpiry()) {
@@ -22,26 +24,13 @@ export default function Houses() {
     }, [checkExpiry])
 
     useEffect(() => {
-        const fetchHouses = async () => {
-            try {
-                const response = await fetch(`${base_url}/v1/auth/houses`, {
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`,
-                        'Content-Type': 'application/json'
-                    }
-                })
-
-                const data = await response.json();
-                setHouses(data)
-                setSelectedHouse(data[0])
-            } catch (error) {
-                console.log('error occured')
-            }
+        if (!checkExpiry()) {
+            fetchData(endpoint).then((data) => {
+                setHouses(data);
+                if (data.length > 0) setSelectedHouse(data[0]);
+            });
         }
-        if(!checkExpiry()) {
-            fetchHouses();
-        }
-    }, [checkExpiry, getToken])
+    }, [endpoint, checkExpiry, getToken]);
 
     return (
         <RequireAuth>

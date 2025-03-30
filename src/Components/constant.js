@@ -10,3 +10,19 @@ export const checkExpiry = () => {
     }
     return false;
 };
+
+export const fetchData = async (endpoint) => {
+    try {
+        const response = await fetch(`${base_url}${endpoint}`, {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log('error occured with const fetchdata')
+        return[];
+    }
+}

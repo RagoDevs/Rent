@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './PayHistory.css'
-import { base_url, checkExpiry, getToken } from '@/Components/constant';
+import { checkExpiry, fetchData, getToken } from '@/Components/constant';
 import { useRouter } from 'next/navigation';
 
 
@@ -10,6 +10,7 @@ export default function PayHistory () {
 
     const [pay, setPay] = useState([])
     const router = useRouter();
+    const endpoint = '/v1/auth/payments'
 
     useEffect(() => {
         if (checkExpiry()) {
@@ -18,25 +19,12 @@ export default function PayHistory () {
     }, [router])
 
     useEffect(() => {
-        const fetchPay = async () => {
-            try {
-                const response = await fetch(`${base_url}/v1/auth/payments`, {
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                const data = await response.json()
-                setPay(data)
-            }
-            catch (error) {
-                console.error('Error fetching pays')
-            }
+        if (!checkExpiry()) {
+            fetchData(endpoint).then((data) => {
+                setPay(data);
+            })
         }
-        if(!checkExpiry()) {
-            fetchPay();
-        }
-    }, [checkExpiry, getToken])
+    }, [endpoint, checkExpiry, getToken]);
     return (
         <>
         <div className="paywrapper--three">
@@ -48,7 +36,7 @@ export default function PayHistory () {
                                     <th>Name</th>
                                     <th>Date</th>
                                     <th>Location</th>
-                                    <th>House</th>
+                                    <th>Block-Partition</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
@@ -60,7 +48,7 @@ export default function PayHistory () {
                                             <td>{item.tenant_name}</td>
                                             <td>{new Date(item.updated_at).toISOString().split('T')[0]}</td>
                                             <td>{item.location}</td>
-                                            <td>{item.block}</td>
+                                            <td>{item.block} - {item.partition}</td>
                                             <td>{item.amount}</td>
                                         </tr>
                                     )
