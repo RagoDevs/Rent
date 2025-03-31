@@ -1,57 +1,46 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { base_url } from "../constant";
+import { submitRequest } from "../constant";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
-  const [isloading, setIsLoading] = useState(true)
+  const [isloading, setIsLoading] = useState(true);
   const [err, setErr] = useState("");
   const router = useRouter();
 
-  useEffect(() =>{
-    const storedToken = localStorage.getItem('rentSiteToken')
-    if(storedToken) {
-       setToken(storedToken)
+  useEffect(() => {
+    const storedToken = localStorage.getItem('rentSiteToken');
+    if (storedToken) {
+      setToken(storedToken);
     }
-    setIsLoading(false)
-  },[]);
-
+    setIsLoading(false);
+  }, []);
 
   const signin = async (email, password) => {
-
     try {
-
-      const response = await fetch(`${base_url}/v1/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const res = await response.json();
-
-      if (response.status === 201) {
-        const  token  = res.token;
-        const expire  = res.expiry
-
-        if (token) {
-          setToken(token);
-          localStorage.setItem("rentSiteToken", token);
-          localStorage.setItem('rentSiteExpiry', expire)
-          router.push("/dashboard");
-        }
+      setErr("");
+      setIsLoading(true);
+      
+      const res = await submitRequest('/v1/login', 'POST', { email, password });
+      
+      if (res?.token && res?.expiry) {
+        setToken(res.token);
+        localStorage.setItem("rentSiteToken", res.token);
+        localStorage.setItem('rentSiteExpiry', res.expiry);
+        router.push("/dashboard");
+        return true;
       } else {
-        setErr(res.error || "Login failed");
-        throw new Error('error')
+        throw new Error("Invalid response from server");
       }
     } catch (error) {
-      setErr("An error occurred");
+      setErr(error.message || "Login failed");
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,7 +51,7 @@ export function AuthProvider({ children }) {
     router.replace("/login");
   };
 
-  const value = { token, signin, signout, err, isloading };
+  const value = { token, signin, signout, err, isloading, submitRequest };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

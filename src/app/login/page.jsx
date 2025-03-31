@@ -7,13 +7,14 @@ import * as Yup from 'yup';
 import { useAuth } from '@/Components/Require/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from "next/link";
 
 export default function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
+    const pathname = usePathname
     const show = '/Assets/show.png'
     const eyeSlashIcon = '/Assets/hide.png'
 
@@ -40,7 +41,7 @@ export default function Login() {
 
             router.push('/dashboard');
         }
-    }, []);
+    }, [router, pathname]);
 
     const [loginError, setLoginError] = useState(null);
     let auth = useAuth();
@@ -59,7 +60,7 @@ export default function Login() {
         onSubmit: async values => {
             try {
                 await auth.signin(values.email, values.password);
-
+                
                 toast.success("Login Successfully!");
 
             } catch (error) {

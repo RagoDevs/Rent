@@ -24,23 +24,24 @@
     rgb(255,255,255)); */
 
   background-image: radial-gradient(
-      circle at top left,
-       rgb(33, 29, 75) 0%, 
-       rgb(33, 29, 75) 4%,
-       rgb(29, 39, 97) 4%,
-       rgb(29, 39, 97) 39%,
-       rgb(24, 49, 120) 39%,
-       rgb(24, 49, 120) 45%,
-       rgb(20, 59, 142) 45%,
-       rgb(20, 59, 142) 69%,
-       rgb(15, 69, 164) 69%, 
-       rgb(15, 69, 164) 71%,
-       rgb(11, 79, 186) 71%, 
-       rgb(11, 79, 186) 75%,
-       rgb(6, 89, 209) 75%,
-       rgb(6, 89, 209) 79%,
-       rgb(2, 99, 231) 79%,
-       rgb(2, 99, 231) 100%);
+    circle at top left,
+    rgb(33, 29, 75) 0%,
+    rgb(33, 29, 75) 4%,
+    rgb(29, 39, 97) 4%,
+    rgb(29, 39, 97) 39%,
+    rgb(24, 49, 120) 39%,
+    rgb(24, 49, 120) 45%,
+    rgb(20, 59, 142) 45%,
+    rgb(20, 59, 142) 69%,
+    rgb(15, 69, 164) 69%,
+    rgb(15, 69, 164) 71%,
+    rgb(11, 79, 186) 71%,
+    rgb(11, 79, 186) 75%,
+    rgb(6, 89, 209) 75%,
+    rgb(6, 89, 209) 79%,
+    rgb(2, 99, 231) 79%,
+    rgb(2, 99, 231) 100%
+  );
 
   /* background-image: radial-gradient(
     circle at top right,
@@ -108,7 +109,6 @@
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 16px;
-  
 }
 
 .btn:hover {
@@ -116,8 +116,14 @@
   color: blue;
 }
 
-.forgot-note {
+.forgot-note1 p {
   text-align: center;
-    font-family: sans-serif;
-    color: rgb(192, 199, 199);
+  font-family: sans-serif;
+  color: rgb(17, 224, 110);
+}
+
+.forgot-note p{
+  text-align: center;
+  font-family: sans-serif;
+  color: rgb(232, 238, 235);
 }

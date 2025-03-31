@@ -26,3 +26,25 @@ export const fetchData = async (endpoint) => {
         return[];
     }
 }
+
+export const submitRequest = async (endpoint, method = 'POST', body = null) => {
+    try {
+        const response = await fetch(`${base_url}${endpoint}`, {
+            method, 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body ? JSON.stringify(body) : null
+        });
+        const res = await response.json();
+
+        if (response.status < 200 || response.status >= 300) {
+            throw new Error(res.error || 'Request failed from constant')
+        }
+
+        return res;
+    } catch (error) {
+        console.error('request error', error);
+        throw error
+    }
+}
