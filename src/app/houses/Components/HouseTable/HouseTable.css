@@ -26,7 +26,7 @@
   border: 2px solid black;
 }
 
-.add--house button {
+.add-house-btn button {
   height: 33px;
   background-color: rgb(57, 57, 243);
   padding: 0.2rem;
@@ -88,6 +88,89 @@
 
 .house--table table h4 {
   color: rgb(83, 83, 209);
+}
+
+.add-house-bg {
+  width: 100%;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.add-house {
+  height: 25rem;
+  width: 23rem;
+  background-color: #f2f4f6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.close-btn {
+  float: right;
+  background: none;
+  cursor: pointer;
+  color: black;
+  border: none;
+  font-size: 1.4rem;
+}
+
+.add-house-form h4 {
+  color: #1e242e;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.add-house-form input {
+  width: 100%;
+  height: 2.4rem;
+  margin: .5rem 0;
+  background: none;
+  border-radius: 8px;
+  padding: 0 .4rem;
+  border: 2px solid blue;
+  color: black;
+  font-size: 1rem;
+}
+.add-house-dropdown {
+  margin: .6rem 0;
+}
+
+.add-house-dropdown label {
+  margin-left: .2rem;
+  color: #1e242e;
+}
+
+.add-house-dropdown select {
+  width: 100%;
+  margin-top: .3rem;
+  height: 3rem;
+  background-color: rgb(23, 23, 115);
+  border-radius: 8px;
+  font-size: .8rem;
+}
+
+.add-house-dropdown option {
+  padding: 1rem 0;
+  font-size: .9rem;
+}
+
+.add-house-form button{
+  width: 100%;
+  border-radius: 8px;
+  height: 2.6rem;
+  background: none;
+  border: 2px solid blue;
+  color: #191b19;
+  font-size: 1.1rem;
 }
 
 @media screen and (max-width: 700px) {
