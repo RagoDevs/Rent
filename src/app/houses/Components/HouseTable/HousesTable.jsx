@@ -2,29 +2,72 @@
 
 import { useState } from 'react';
 import './HouseTable.css';
+import { submitData } from '@/Components/constant';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function HousesTable({ houses = [], setSelectedHouse }) {
     const [searchQuery, setSearchQuery] = useState('')
     const [modal, setModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [form, setForm] = useState({
         location: '',
         block: '',
         partition: '',
         occupied: ''
-    })
+    });
+    const [refreshKey, setRefreshKey] = useState(0)
 
 
     const filterHouses = houses.filter((house) =>
         house.location.toLowerCase().includes(searchQuery.toLowerCase()))
 
     function handleChange(e) {
-        setForm({
-            ...form, 
-            [e.target.name]: e.target.value,
-        });
+        const { name, value } = e.target;
+        setForm(prev => ({
+            ...prev,
+            [name]: name === 'occupied' ? value === 'true' : value
+        }));
+    }
+
+    const handlesSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        if (isNaN(form.partition)) {
+            setIsSubmitting(false);
+            toast.warn('Partition must be a number')
+            return;
+        }
+
+        try {
+            const apiData = {
+                location: form.location,
+                block: form.block,
+                partition: Number(form.partition),
+                occupied: form.occupied === true
+            };
+            await submitData('/v1/auth/houses', 'POST', apiData)
+            toast.success('New House Added')
+
+            setForm({
+                location: '',
+                block: '',
+                partition: '',
+                occupied: ''
+            });
+
+            setRefreshKey(prev => prev + 1)
+        } catch (error) {
+            console.log('add house form submission error')
+            toast.error('Error submiting form')
+        } finally {
+            setIsSubmitting(false);
+        }
+
     }
     return (
         <>
+            <ToastContainer />
             <div className="houses-table-container">
                 <div className="house--header">
                     <h2>Houses</h2>
@@ -51,7 +94,7 @@ export default function HousesTable({ houses = [], setSelectedHouse }) {
                             </button>
                             <div className="add-house-form">
                                 <h4>ADD A NEW HOUSE</h4>
-                                <form>
+                                <form onSubmit={handlesSubmit}>
                                     <input
                                         type="text"
                                         name='location'
@@ -78,14 +121,20 @@ export default function HousesTable({ houses = [], setSelectedHouse }) {
                                     />
                                     <div className="add-house-dropdown">
                                         <label>Is it Occupied?</label>
-                                        <select name="occupied" value={form.occupied} onChange={handleChange}>
+                                        <select name="occupied"
+                                            value={form.occupied === true ? 'true' : form.occupied === false ? 'false' : ''}
+                                            onChange={handleChange}
+                                            required
+                                        >
                                             <option value="" disabled>Pick Options</option>
                                             <option value={true}>Occupied</option>
                                             <option value={false}>Vacant</option>
                                         </select>
 
                                     </div>
-                                    <button>Send It</button>
+                                    <button type='submit' disabled={isSubmitting}>
+                                        {isSubmitting ? 'Submitting...' : 'Send it' }
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -93,7 +142,7 @@ export default function HousesTable({ houses = [], setSelectedHouse }) {
                 )}
                 <div className="house--table">
 
-                    <table>
+                    <table key={refreshKey}>
                         <thead>
                             <tr>
                                 <td>Location</td>

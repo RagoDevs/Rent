@@ -81,4 +81,8 @@
   .log--out {
     display: contents;
   }
+
+  .log--out li:hover {
+    color: red !important;
+  }
 }

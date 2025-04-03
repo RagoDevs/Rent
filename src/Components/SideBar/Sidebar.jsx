@@ -68,7 +68,7 @@ export default function Sidebar() {
                             </Link>
                         </li>
                         <div className="log--out" onClick={signout}>
-                            <li className={pathname === '/maps' ? 'active' : ''}>
+                            <li className={pathname === '/logout' ? 'active' : ''}>
                                 <img
                                     src="/Assets/exit.png"
                                     alt=""
