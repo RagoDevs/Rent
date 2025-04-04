@@ -11,9 +11,10 @@ export const checkExpiry = () => {
   return false;
 };
 
-export const fetchData = async (endpoint) => {
+export const fetchData = async (endpoint, options ={}) => {
   try {
     const response = await fetch(`${base_url}${endpoint}`, {
+      method: options.method || 'GET',
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
