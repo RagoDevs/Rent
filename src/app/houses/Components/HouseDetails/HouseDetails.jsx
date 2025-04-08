@@ -35,7 +35,7 @@ export default function HouseDetails({selectedHouse}) {
                     <div className="houseinfo--header">
                         <p>Block {house.block}</p>
                         <h3>{house.location}</h3>
-                        <p>Partition{house.partition}</p>
+                        <p>Partition {house.partition}</p>
                     </div>
                     <div className="houseinfo--occupant">
                         <img src="/Assets/people.png" alt="" />

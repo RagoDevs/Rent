@@ -5,7 +5,7 @@ import './HouseTable.css';
 import { submitData } from '@/Components/constant';
 import { toast, ToastContainer } from 'react-toastify';
 
-export default function HousesTable({ houses = [], setSelectedHouse }) {
+export default function HousesTable({ houses = [], onHouseClick }) {
     const [searchQuery, setSearchQuery] = useState('')
     const [modal, setModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,11 +153,11 @@ export default function HousesTable({ houses = [], setSelectedHouse }) {
                         </thead>
                         <tbody>
                             {filterHouses.length > 0 ? (
-                                filterHouses.map((items, index) => {
+                                filterHouses.map((items) => {
                                     return (
                                         <tr
-                                            key={index}
-                                            onClick={() => setSelectedHouse(items.id)}
+                                            key={items.id}
+                                            onClick={() => onHouseClick(items)}
                                             style={{ cursor: 'pointer' }}
                                         >
                                             <td>{items.location}</td>

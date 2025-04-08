@@ -45,7 +45,7 @@ export default function Houses() {
                         </div>
                         <div className="house-main">
                             <div className="housemain-container-one">
-                                <HousesTable houses={houses} setSelectedHouse={setSelectedHouse}/>
+                                <HousesTable houses={houses} onHouseClick={setSelectedHouse}/>
                             </div>
                             <div className="housemain-container-two">
                                 <HouseDetails selectedHouse={selectedHouse}/>
