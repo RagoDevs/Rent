@@ -2,108 +2,149 @@
   width: 100%;
 }
 .house--info {
-    display: flex;
-    justify-content: space-between;
-    margin: 2.3rem 1rem;
-    width: 85%;
-  }
-  
-  .houseinfo--header {
-    color: white;
-  }
-  
-  .houseinfo--header p {
-    color: rgb(126, 124, 124);
-    padding: .2rem 0;
-  }
-  
-  .houseinfo--occupant {
-    display: flex;
-    align-items: center;
-    gap: .7rem;
-  }
-  
-  .houseinfo--occupant img {
-    height: 2.2rem;
-    background-color: aliceblue;
-    border-radius: 50%;
-  }
-  
-  .houseinfo--occupant h3 {
-    text-align: center;
-    color: white;
-    font-weight: 400;
-  }
-  
-  .house--update {
-    margin: 0 1rem;
-    width: 93%;
-    background-color: #364253;
-    padding: 2.3rem 1.3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    color: white;
-    border-radius: 10px;
-  }
-  
-  .house--update p {
-    color: #a6a9ad;
-  }
-  
-  .house--price {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .house--status {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .house--contract {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .house--contract  h4{
-    border: 1px solid rgb(99, 97, 97);
-    height: 2rem;
-    width: 5rem;
-    text-align: center;
-    align-content: center;
-    border-radius: 5px;
-  }
-  
-  .house--update button {
-    height: 2.5rem;
-    border-radius: 7px;
-    border: none;
-    background-color: rgb(57, 57, 243);
-    color: white;
-    cursor: pointer;
-  }
-  
-  .house--activity {
-    width: 90%;
-    height: 62%;
-    padding: 1.2rem;
-  }
-  
-  .house--activity h3 {
-    color: aliceblue;
-    font-size: 24px;
-  }
-  
-  .house--activity ul {
-    width: 100%;
-    height: auto;
-    margin: 1.5rem 0 0 .9rem;
-  }
-  
-  .house--activity li {
-    padding: 1.1rem 0 0 1rem;
-    color: aliceblue;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  margin: 2.3rem 1rem;
+  width: 85%;
+}
+
+.houseinfo--header {
+  color: white;
+}
+
+.houseinfo--header p {
+  color: rgb(126, 124, 124);
+  padding: 0.2rem 0;
+}
+
+.houseinfo--occupant {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.houseinfo--occupant img {
+  height: 2.2rem;
+  background-color: aliceblue;
+  border-radius: 50%;
+}
+
+.houseinfo--occupant h3 {
+  text-align: center;
+  color: white;
+  font-weight: 400;
+}
+
+.house--update {
+  margin: 0 1rem;
+  width: 93%;
+  background-color: #364253;
+  padding: 2.3rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+  border-radius: 10px;
+}
+
+.house--update p {
+  color: #a6a9ad;
+}
+
+.house--price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.house--status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.house--contract {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.house--contract h4 {
+  border: 1px solid rgb(99, 97, 97);
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  align-content: center;
+  border-radius: 5px;
+}
+
+.house--update button {
+  height: 2.5rem;
+  border-radius: 7px;
+  border: none;
+  background-color: rgb(57, 57, 243);
+  color: white;
+  cursor: pointer;
+}
+
+.house--activity {
+  width: 90%;
+  height: 62%;
+  padding: 1.2rem;
+}
+
+.house--activity h3 {
+  color: aliceblue;
+  font-size: 24px;
+}
+
+.house--activity ul {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0 0 0.9rem;
+}
+
+.house--activity li {
+  padding: 1.1rem 0 0 1rem;
+  color: aliceblue;
+}
+
+.update-house-bg {
+  width: 100%;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.update-house {
+  height: 25rem;
+  width: 23rem;
+  background-color: #f2f4f6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.update-house h4 {
+  color: #1e242e;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.update-house-form input{
+  width: 100%;
+  height: 2.4rem;
+  margin: .5rem 0;
+  background: none;
+  border-radius: 8px;
+  padding: 0 .4rem;
+  border: 2px solid blue;
+  color: black;
+  font-size: 1rem;
+}
