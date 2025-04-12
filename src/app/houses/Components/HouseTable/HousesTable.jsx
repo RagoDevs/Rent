@@ -133,7 +133,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
 
                                     </div>
                                     <button type='submit' disabled={isSubmitting}>
-                                        {isSubmitting ? 'Submitting...' : 'Send it' }
+                                        {isSubmitting ? 'Submitting...' : 'Send it'}
                                     </button>
                                 </form>
                             </div>
@@ -149,6 +149,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                                 <td>Block</td>
                                 <td>Partition</td>
                                 <td>Occupied</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -163,14 +164,18 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                                             <td>{items.location}</td>
                                             <td>{items.block}</td>
                                             <td>{items.partition}</td>
-                                            <td style={{ color: items.occupied ? '#33ff3c' : '#ef091a' }}>
-                                                {items.occupied ? 'Occupied' : 'Vacant'}</td>
+                                            <td style={{ color: items.occupied ? '#f8d7da' : '#28a745' }}>
+                                                {items.occupied ? '🔴 Occupied' : '  🟢 Vacant'}
+                                            </td>
+                                            <td>
+                                                <button className='delete-btn'>Delete</button>
+                                            </td>
                                         </tr>
                                     );
                                 })
                             ) : (
                                 <tr>
-                                    <td colSpan={4} style={{ borderBottom: 'none' }}>
+                                    <td colSpan={5} style={{ borderBottom: 'none' }}>
                                         <div style={{ textAlign: 'center', verticalAlign: 'middle', fontSize: '16px' }}>
                                             No Houses Found
                                         </div>

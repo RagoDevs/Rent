@@ -38,6 +38,7 @@ export default function PayHistory () {
                                     <th>Location</th>
                                     <th>Block-Partition</th>
                                     <th>Amount</th>
+                                    <th style={{width: '170px'}}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,12 +51,16 @@ export default function PayHistory () {
                                             <td>{item.location}</td>
                                             <td>{item.block} - {item.partition}</td>
                                             <td>{item.amount}</td>
+                                            <td>
+                                                <button className='edit-btn' >Edit</button>
+                                                <button className='delete-btn'>Delete</button>
+                                            </td>
                                         </tr>
                                     )
                                 })
                              ) : (
                                 <tr>
-                                    <td>No Payments</td>
+                                    <td colSpan={6}>No Payments Found</td>
                                 </tr>
                              )}
                             </tbody>

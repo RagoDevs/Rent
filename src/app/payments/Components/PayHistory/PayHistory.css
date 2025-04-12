@@ -53,6 +53,33 @@
   color: rgb(8, 221, 8);
 }
 
+/* action */
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  margin: 0 1rem;
+  border: none;
+  padding: .3rem 1rem;
+  border-radius: 6px;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: .3rem 1rem;
+  border-radius: 6px;
+
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
 @media screen and (max-width: 850px) {
     
   .history-table {

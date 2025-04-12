@@ -50,7 +50,7 @@ export default function HouseDetails({ selectedHouse }) {
                             </div>
                             <div className="house--status">
                                 <p>Status</p>
-                                <h4>Occupied</h4>
+                                <h4>{house.occupied ? '🔴 Occupied' : '  🟢 Vacant'}</h4>
                             </div>
                             <div className="house--contract">
                                 <p>Contract</p>

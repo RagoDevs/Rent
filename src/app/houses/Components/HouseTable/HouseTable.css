@@ -59,9 +59,8 @@
 .house--table table thead tr {
   height: 2.8rem;
   border-radius: 16px;
-
 }
-.house--table table thead td{
+.house--table table thead td {
   background-color: #113d85;
   color: #a6a9ad;
   font-family: sans-serif;
@@ -90,6 +89,14 @@
   color: rgb(83, 83, 209);
 }
 
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.3rem 1rem;
+  border-radius: 6px;
+}
+
 .add-house-bg {
   width: 100%;
   height: 100dvh;
@@ -111,7 +118,7 @@
   background-color: #fefefe;
   border-radius: 20px;
   padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -131,7 +138,8 @@
   font-size: 20px;
 }
 
-.add-house-form input, .add-house-form select {
+.add-house-form input,
+.add-house-form select {
   width: 100%;
   height: 2.4rem;
   margin-bottom: 15px;
@@ -144,7 +152,9 @@
 }
 
 .add-house-form select {
-  height: 3rem;
+  font-size: 15px;
+  padding: 0.2rem;
+  color: black;
 }
 
 .add-house-dropdown label {
@@ -153,7 +163,7 @@
   font-size: 1.1rem;
 }
 
-.add-house-form button{
+.add-house-form button {
   width: 100%;
   padding: 14px;
   background: #007aff;
@@ -166,7 +176,6 @@
 }
 
 @media screen and (max-width: 700px) {
-  
   .house--header {
     height: 100px;
     display: flex;
@@ -179,8 +188,7 @@
     width: 100%;
   }
 
-
-  .search--input input{
+  .search--input input {
     width: 100%;
     height: 2.3rem;
   }
@@ -194,6 +202,4 @@
     height: 30dvh;
     overflow-x: auto;
   }
-
- 
 }
