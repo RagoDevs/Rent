@@ -28,7 +28,7 @@
 
 .add-house-btn button {
   height: 33px;
-  background-color: rgb(57, 57, 243);
+  background-color: #007aff;
   padding: 0.2rem;
   border: none;
   width: 90px;
@@ -108,9 +108,11 @@
 .add-house {
   height: 25rem;
   width: 23rem;
-  background-color: #f2f4f6;
-  border-radius: 8px;
+  background-color: #fefefe;
+  border-radius: 20px;
   padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .close-btn {
@@ -126,51 +128,41 @@
   color: #1e242e;
   margin: 1rem 0;
   text-align: center;
-  font-family: sans-serif;
+  font-size: 20px;
 }
 
-.add-house-form input {
+.add-house-form input, .add-house-form select {
   width: 100%;
   height: 2.4rem;
-  margin: .5rem 0;
-  background: none;
-  border-radius: 8px;
-  padding: 0 .4rem;
-  border: 2px solid blue;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 14px;
+  border: 2px solid #ccc;
   color: black;
   font-size: 1rem;
 }
-.add-house-dropdown {
-  margin: .6rem 0;
+
+.add-house-form select {
+  height: 3rem;
 }
 
 .add-house-dropdown label {
-  margin-left: .2rem;
-  color: #1e242e;
-}
-
-.add-house-dropdown select {
-  width: 100%;
-  margin-top: .3rem;
-  height: 3rem;
-  background-color: rgb(23, 23, 115);
-  border-radius: 8px;
-  font-size: .8rem;
-}
-
-.add-house-dropdown option {
-  padding: 1rem 0;
-  font-size: .9rem;
+  margin: 0 0 1rem 0.4rem;
+  color: #0f2449;
+  font-size: 1.1rem;
 }
 
 .add-house-form button{
   width: 100%;
-  border-radius: 8px;
-  height: 2.6rem;
-  background: none;
-  border: 2px solid blue;
-  color: #191b19;
-  font-size: 1.1rem;
+  padding: 14px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.4);
 }
 
 @media screen and (max-width: 700px) {
