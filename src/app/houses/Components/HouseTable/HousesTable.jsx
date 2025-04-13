@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './HouseTable.css';
 import { submitData } from '@/Components/constant';
 import { toast, ToastContainer } from 'react-toastify';
@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 export default function HousesTable({ houses = [], onHouseClick }) {
     const [searchQuery, setSearchQuery] = useState('')
     const [modal, setModal] = useState(false);
+    const [selectedHouse, setSelectedHouse] = useState(houses[0]?.id || null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [form, setForm] = useState({
         location: '',
@@ -17,10 +18,26 @@ export default function HousesTable({ houses = [], onHouseClick }) {
     });
     const [refreshKey, setRefreshKey] = useState(0)
 
+    useEffect(() => {
+        if (houses.length > 0 && selectedHouse === houses[0]?.id) {
+            setSelectedHouse(houses[0].id);
+            onHouseClick(houses[0]);
+        }
+    }, [houses, selectedHouse, onHouseClick]);
 
     const filterHouses = houses.filter((house) =>
         house.location.toLowerCase().includes(searchQuery.toLowerCase()))
 
+    
+    useEffect(() => {
+        if (filterHouses.length > 0) {
+            const stillExists = filterHouses.some(house => house.id === selectedHouse);
+            if (!stillExists) {
+                setSelectedHouse(filterHouses[0].id);
+                onHouseClick(filterHouses[0]);
+            }
+        }
+    }, [filterHouses, selectedHouse, onHouseClick]);
     function handleChange(e) {
         const { name, value } = e.target;
         setForm(prev => ({
@@ -157,9 +174,13 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                                 filterHouses.map((items) => {
                                     return (
                                         <tr
-                                            key={items.id}
-                                            onClick={() => onHouseClick(items)}
-                                            style={{ cursor: 'pointer' }}
+                                        key={items.id}
+                                        onClick={() => {
+                                            setSelectedHouse(items.id);
+                                            onHouseClick(items);
+                                        }}
+                                        className={selectedHouse === items.id ? 'highlighted' : ''}
+                                        style={{ cursor: 'pointer' }}
                                         >
                                             <td>{items.location}</td>
                                             <td>{items.block}</td>

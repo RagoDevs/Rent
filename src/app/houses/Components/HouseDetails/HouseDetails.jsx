@@ -2,13 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import './HouseDetails.css'
-import { checkExpiry, fetchData } from '@/Components/constant';
+import { checkExpiry, fetchData, submitData } from '@/Components/constant';
 import { useRouter } from 'next/navigation';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function HouseDetails({ selectedHouse }) {
 
     const [houseDetails, setHouseDetails] = useState([]);
     const [modal, setModal] = useState(false)
+    const [formData, setFormData] = useState({
+        location: '',
+        block: '',
+        partition: '',
+        price: ''
+    })
     const router = useRouter();
     const house = selectedHouse || {}
     const id = house.id;
@@ -27,8 +34,54 @@ export default function HouseDetails({ selectedHouse }) {
             })
         }
     }, [endpoint, checkExpiry, id])
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+
+    const handlesSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        if (isNaN(formData.partition)) {
+            setIsSubmitting(false);
+            toast.warn('Partition must be a number')
+            return;
+        }
+
+        try {
+            const apiData = {
+                location: formData.location,
+                block: formData.block,
+                partition: Number(formData.partition),
+                price: formData.price
+            };
+            await submitData(endpoint, 'PUT', apiData)
+            toast.success('House Details Updated')
+
+            setForm({
+                location: '',
+                block: '',
+                partition: '',
+                occupied: ''
+            });
+
+            setRefreshKey(prev => prev + 1)
+        } catch (error) {
+            console.log('update house form submission error')
+            toast.error('Error submiting changes')
+        } finally {
+            setIsSubmitting(false);
+        }
+
+    }
     return (
         <>
+            <ToastContainer />
             {houseDetails.length > 0 ? (
                 houseDetails.map((house, index) => (
                     <div className="house-det" key={index}>
@@ -56,7 +109,19 @@ export default function HouseDetails({ selectedHouse }) {
                                 <p>Contract</p>
                                 <h4>File</h4>
                             </div>
-                            <button onClick={() => setModal(true)}>Make Changes</button>
+                            <button
+                                onClick={() => {
+                                    setFormData({
+                                        location: house.location || '',
+                                        block: house.block || '',
+                                        partition: house.partition?.toString() || '',
+                                        price: house.price || ''
+                                    });
+                                    setModal(true);
+                                }}
+                            >
+                                Make Changes
+                            </button>
                         </div>
                     </div>
                 ))
@@ -83,18 +148,39 @@ export default function HouseDetails({ selectedHouse }) {
                         </button>
                         <div className="update-house-form">
                             <h4>Update House Details</h4>
-                            <form>
+                            <form onSubmit={handlesSubmit}>
                                 <input
                                     type="text"
-                                    name=""
+                                    name="location"
                                     placeholder='Location'
+                                    value={formData.location}
+                                    onChange={handleChange}
                                 />
 
                                 <input
                                     type="text"
-                                    name=""
-                                    placeholder='Partition'
+                                    name="block"
+                                    placeholder='Block'
+                                    value={formData.block}
+                                    onChange={handleChange}
                                 />
+                                <input
+                                    type="text"
+                                    name="partition"
+                                    placeholder='Partition'
+                                    value={formData.partition}
+                                    onChange={handleChange}
+                                />
+
+                                <input
+                                    type="text"
+                                    name="price"
+                                    placeholder='Price'
+                                    value={formData.price}
+                                    onChange={handleChange}
+                                />
+
+                                <button type='submit'>Update</button>
                             </form>
                         </div>
                     </div>
