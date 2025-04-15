@@ -1,7 +1,21 @@
+'use client'
 export const base_url = "https://rentbe.ragodevs.com";
 
 export const getToken = () => localStorage.getItem("rentSiteToken");
 export const getExpiry = () => localStorage.getItem("rentSiteExpiry");
+import { useEffect, useState } from 'react';
+
+export default function useIsSuperUser() {
+  const [isSuperUser, setIsSuperUser] = useState(false);
+
+  useEffect(() => {
+    const role = localStorage.getItem('rentSuperUser') === "true";
+    setIsSuperUser(role);
+  }, []);
+
+  return isSuperUser;
+}
+
 
 export const checkExpiry = () => {
   const expiry = getExpiry();

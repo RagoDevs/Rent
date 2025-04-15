@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
         setToken(res.token);
         localStorage.setItem("rentSiteToken", res.token);
         localStorage.setItem('rentSiteExpiry', res.expiry);
+        localStorage.setItem('rentSuperUser', res.is_super_user)
         router.push("/dashboard");
         return true;
       } else {

@@ -91,15 +91,22 @@ export default function HouseDetails({ selectedHouse }) {
                                 <h3>{house.location}</h3>
                                 <p>Partition {house.partition}</p>
                             </div>
-                            <div className="houseinfo--occupant">
-                                <img src="/Assets/people.png" alt="" />
-                                <h3>Jack Adam</h3>
-                            </div>
+                            {house.tenant ? (
+                                <div className="houseinfo--occupant">
+                                    <img src="/Assets/people.png" alt="" />
+                                    <h3>{house.tenant}</h3>
+                                </div>
+                            ) : (
+                                <div className="houseinfo--occupant">
+                                    <button>Add Tenant</button>
+                                </div>
+                            )}
+
                         </div>
                         <div className="house--update">
                             <div className="house--price">
                                 <p>Price</p>
-                                <h4>500,000/=</h4>
+                                <h4>Tsh {house.price}/=</h4>
                             </div>
                             <div className="house--status">
                                 <p>Status</p>
