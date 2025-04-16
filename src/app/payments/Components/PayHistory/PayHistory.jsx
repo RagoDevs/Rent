@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import './PayHistory.css'
-import { checkExpiry, fetchData, getToken } from '@/Components/constant';
+import useIsSuperUser, { checkExpiry, fetchData, getToken } from '@/Components/constant';
 import { useRouter } from 'next/navigation';
 
 
-export default function PayHistory () {
+export default function PayHistory() {
 
     const [pay, setPay] = useState([])
     const router = useRouter();
     const endpoint = '/v1/auth/payments'
+    const isSuperUser = useIsSuperUser();
 
     useEffect(() => {
         if (checkExpiry()) {
@@ -27,22 +28,22 @@ export default function PayHistory () {
     }, [endpoint, checkExpiry, getToken]);
     return (
         <>
-        <div className="paywrapper--three">
-                    <h3>Transaction History</h3>
-                    <div className="history-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Date</th>
-                                    <th>Location</th>
-                                    <th>Block-Partition</th>
-                                    <th>Amount</th>
-                                    <th style={{width: '170px'}}>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                             {pay && pay.length > 0 ? (
+            <div className="paywrapper--three">
+                <h3>Transaction History</h3>
+                <div className="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Block-Partition</th>
+                                <th>Amount</th>
+                                <th style={{ width: '170px' }}>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pay && pay.length > 0 ? (
                                 pay.map((item, index) => {
                                     return (
                                         <tr key={index}>
@@ -51,22 +52,33 @@ export default function PayHistory () {
                                             <td>{item.location}</td>
                                             <td>{item.block} - {item.partition}</td>
                                             <td>{item.amount}</td>
+                                    
                                             <td>
-                                                <button className='edit-btn' >Edit</button>
-                                                <button className='delete-btn'>Delete</button>
+                                                {isSuperUser ?
+                                                    <div style={{ width: '140px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                                                        <button className='edit-btn' >Edit</button>
+                                                        <button className='disable-btn'>Disable</button>
+                                                        <button className='delete-btn'>Delete</button>
+                                                    </div>
+                                                    :
+                                                    <div>
+                                                        <button className='edit-btn' >Edit</button>
+                                                        <button className='disable-btn'>Disable</button>
+                                                    </div>
+                                                }
                                             </td>
                                         </tr>
                                     )
                                 })
-                             ) : (
+                            ) : (
                                 <tr>
                                     <td colSpan={6}>No Payments Found</td>
                                 </tr>
-                             )}
-                            </tbody>
-                        </table>
-                    </div>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
+            </div>
         </>
     )
 }

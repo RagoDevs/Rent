@@ -80,6 +80,19 @@
   background-color: #a71d2a;
 }
 
+.disable-btn {
+  border: 1px solid gray;
+  background: none;
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.disable-btn:hover {
+  border: 2px solid #a71d2a;
+}
+
 @media screen and (max-width: 850px) {
     
   .history-table {

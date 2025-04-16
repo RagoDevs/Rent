@@ -8,18 +8,60 @@ import { toast, ToastContainer } from 'react-toastify';
 
 export default function HouseDetails({ selectedHouse }) {
 
+    const router = useRouter();
+    const house = selectedHouse || {}
+    const id = house.id;
+    const endpoint = `/v1/auth/houses/${id}`;
     const [houseDetails, setHouseDetails] = useState([]);
     const [modal, setModal] = useState(false)
+    const [addTenant, setAddTenant] = useState(false)
+    const [refreshKey, setRefreshKey] = useState(0)
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [tenantForm, setTenantForm] = useState({
+        name: '',
+        phone: '',
+        house_id: id,
+        personal_id_type: '',
+        personal_id: '',
+    })
+
+    const tenantEndPoint = '/v1/auth/tenants'
+
+    function handleTenantChange(e) {
+        const { name, value } = e.target;
+        setTenantForm(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+
+    const handleTenantSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            await submitData(tenantEndPoint, 'POST', tenantForm)
+            toast.success('New Tenant Added')
+
+            setTenantForm({
+                name: '',
+                phone: '',
+                house_id: id,
+                personal_id_type: '',
+                personal_id: '',
+            });
+            setRefreshKey(prev = prev + 1)
+        } catch (error) {
+            console.log('adding tenant issue in house route')
+            toast.error('Error adding tenant')
+        }
+    }
     const [formData, setFormData] = useState({
         location: '',
         block: '',
         partition: '',
         price: ''
     })
-    const router = useRouter();
-    const house = selectedHouse || {}
-    const id = house.id;
-    const endpoint = `/v1/auth/houses/${id}`;
 
     useEffect(() => {
         if (checkExpiry()) {
@@ -67,7 +109,6 @@ export default function HouseDetails({ selectedHouse }) {
                 location: '',
                 block: '',
                 partition: '',
-                occupied: ''
             });
 
             setRefreshKey(prev => prev + 1)
@@ -85,7 +126,7 @@ export default function HouseDetails({ selectedHouse }) {
             {houseDetails.length > 0 ? (
                 houseDetails.map((house, index) => (
                     <div className="house-det" key={index}>
-                        <div className="house--info" >
+                        <div className="house--info" key={refreshKey} >
                             <div className="houseinfo--header">
                                 <p>Block {house.block}</p>
                                 <h3>{house.location}</h3>
@@ -98,7 +139,7 @@ export default function HouseDetails({ selectedHouse }) {
                                 </div>
                             ) : (
                                 <div className="houseinfo--occupant">
-                                    <button>Add Tenant</button>
+                                    <button onClick={() => setAddTenant(true)}>Add Tenant</button>
                                 </div>
                             )}
 
@@ -129,6 +170,7 @@ export default function HouseDetails({ selectedHouse }) {
                             >
                                 Make Changes
                             </button>
+
                         </div>
                     </div>
                 ))
@@ -147,6 +189,51 @@ export default function HouseDetails({ selectedHouse }) {
                     <li>Superman</li>
                 </ul>
             </div>
+            {addTenant && (
+                <div className="add-tenant-bg">
+                    <div className="add-tenant">
+                        <button className="close-btn" onClick={() => setAddTenant(false)}>
+                            ✖
+                        </button>
+
+                        <div className="add-tenant-form">
+                            <h4>Add Tenant</h4>
+                            <form onSubmit={handleTenantSubmit}>
+                                <input
+                                    type="text"
+                                    name=''
+                                    placeholder='Tenant Name'
+                                    onChange={handleTenantChange}
+                                />
+                                <input
+                                    type="text"
+                                    name=''
+                                    placeholder='Phone Number'
+                                    onChange={handleTenantChange}
+                                />
+                                <select name="idType" id="idType" onChange={handleTenantChange}>
+                                    <option value="">Select ID Type</option>
+                                    <option value="passport">Passport</option>
+                                    <option value="drivers_license">Driver's License</option>
+                                    <option value="NIDA">NIDA</option>
+                                    <option value="student_id">Student ID</option>
+                                </select>
+
+                                <input
+                                    type="text"
+                                    name=''
+                                    placeholder='ID Number'
+                                    onChange={handleTenantChange}
+                                />
+
+                                <button type='submit' disabled={isSubmitting}>
+                                    {isSubmitting ? 'Submitting...' : 'Send it'}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            )}
             {modal && (
                 <div className="update-house-bg">
                     <div className="update-house">
@@ -187,7 +274,9 @@ export default function HouseDetails({ selectedHouse }) {
                                     onChange={handleChange}
                                 />
 
-                                <button type='submit'>Update</button>
+                                <button type='submit' disabled={isSubmitting}>
+                                    {isSubmitting ? 'Submitting...' : 'Update'}
+                                </button>
                             </form>
                         </div>
                     </div>

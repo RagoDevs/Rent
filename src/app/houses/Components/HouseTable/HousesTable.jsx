@@ -43,7 +43,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
         const { name, value } = e.target;
         setForm(prev => ({
             ...prev,
-            [name]: name === 'occupied' ? value === 'true' : value
+            [name]: value
         }));
     }
 
@@ -62,7 +62,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                 location: form.location,
                 block: form.block,
                 partition: Number(form.partition),
-                occupied: form.occupied === true
+
             };
             await submitData('/v1/auth/houses', 'POST', apiData)
             toast.success('New House Added')
@@ -71,7 +71,6 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                 location: '',
                 block: '',
                 partition: '',
-                occupied: ''
             });
 
             setRefreshKey(prev => prev + 1)
@@ -137,19 +136,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                                         onChange={handleChange}
                                         required
                                     />
-                                    <div className="add-house-dropdown">
-                                        <label>Is it Occupied?</label>
-                                        <select name="occupied"
-                                            value={form.occupied === true ? 'true' : form.occupied === false ? 'false' : ''}
-                                            onChange={handleChange}
-                                            required
-                                        >
-                                            <option value="" disabled>Pick Options</option>
-                                            <option value={true}>Occupied</option>
-                                            <option value={false}>Vacant</option>
-                                        </select>
 
-                                    </div>
                                     <button type='submit' disabled={isSubmitting}>
                                         {isSubmitting ? 'Submitting...' : 'Send it'}
                                     </button>
@@ -191,7 +178,7 @@ export default function HousesTable({ houses = [], onHouseClick }) {
                                             </td>
                                             <td>
                                                 {isSuperUser ?
-                                                    <div style={{width: '140px', display: 'flex', justifyContent: 'center', gap: '10px'}}>
+                                                    <div style={{ width: '140px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
                                                         <button className='disable-btn'>Disable</button>
                                                         <button className='delete-btn'>Delete</button>
                                                     </div>
