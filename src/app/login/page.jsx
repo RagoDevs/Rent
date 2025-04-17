@@ -14,6 +14,7 @@ export default function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
+    let auth = useAuth();
     const pathname = usePathname
     const show = '/Assets/show.png'
     const eyeSlashIcon = '/Assets/hide.png'
@@ -44,7 +45,7 @@ export default function Login() {
     }, [router, pathname]);
 
     const [loginError, setLoginError] = useState(null);
-    let auth = useAuth();
+    
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -69,6 +70,11 @@ export default function Login() {
             }
         },
     });
+    useEffect(() => {
+        if (!auth.token) {
+          formik.resetForm();
+        }
+      }, [auth.token]);
     // const handleShowForgotPassword = () => { router.push('/forgotpassword')}                                          
     return (
         <>
