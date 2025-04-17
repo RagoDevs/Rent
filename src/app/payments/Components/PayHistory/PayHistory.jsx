@@ -8,7 +8,9 @@ import { useRouter } from 'next/navigation';
 
 export default function PayHistory() {
 
-    const [pay, setPay] = useState([])
+    const [pay, setPay] = useState([]);
+    const [modal, setModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
     const endpoint = '/v1/auth/payments'
     const isSuperUser = useIsSuperUser();
@@ -29,7 +31,10 @@ export default function PayHistory() {
     return (
         <>
             <div className="paywrapper--three">
-                <h3>Transaction History</h3>
+                <div className="paywrapper-header">
+                    <h3>Transaction History</h3>
+                    <button onClick={() => setModal(true)}>Add New Payment</button>
+                </div>
                 <div className="history-table">
                     <table>
                         <thead>
@@ -52,7 +57,7 @@ export default function PayHistory() {
                                             <td>{item.location}</td>
                                             <td>{item.block} - {item.partition}</td>
                                             <td>{item.amount}</td>
-                                    
+
                                             <td>
                                                 {isSuperUser ?
                                                     <div style={{ width: '140px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
@@ -79,6 +84,46 @@ export default function PayHistory() {
                     </table>
                 </div>
             </div>
+
+            {modal && (
+                <div className="add-pay-bg">
+                    <div className="add-pay">
+                        <button className="close-btn" onClick={() => setModal(false)}>
+                            ✖
+                        </button>
+                        
+                        <div className="add-pay-form">
+                        <h2>Add New Payment</h2>
+                            <form >
+                                <input
+                                    type="text"
+                                    placeholder='Tenant Name'
+                                    name='name'
+                                />
+                                <input
+                                    type="number"
+                                    placeholder='Amount'
+                                    name='amount'
+                                />
+                                <input
+                                    type="text"
+                                    placeholder='Start Date'
+                                    name='start_date'
+                                />
+                                <input
+                                    type="text"
+                                    placeholder='End Date'
+                                    name='end_date'
+                                />
+
+                                <button type='submit' disabled={isSubmitting}>
+                                    {isSubmitting ? 'Submitting...' : 'Send it'}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     )
 }

@@ -7,11 +7,97 @@
     padding-top: 1.5rem;
 }
 
+.paywrapper-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin: 0 0 1rem 0;
+}
+
+.paywrapper-header button{
+  padding: .6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
 .paywrapper--three h3 {
   position: sticky;
   top: 2rem;
-  margin: 0 0 1rem 2rem;
+  margin: 0 0 0 1rem;
   color: aliceblue;
+}
+
+.add-pay-bg {
+  width: 100%;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.add-pay {
+  height: 22.2rem;
+  width: 23rem;
+  background-color: #fefefe;
+  border-radius: 20px;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+  float: right;
+  background: none;
+  cursor: pointer;
+  color: black;
+  border: none;
+  font-size: 1.4rem;
+}
+
+.add-pay h2 {
+  color: #1e242e;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.add-pay input {
+  width: 100%;
+  height: 2.4rem;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 14px;
+  border: 2px solid #ccc;
+  color: black;
+  font-size: 1rem;
+}
+
+.add-pay-form button {
+  width: 100%;
+  padding: 14px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.4);
+  cursor: pointer;
+}
+
+.add-pay-form button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 .history-table {
@@ -90,7 +176,7 @@
 }
 
 .disable-btn:hover {
-  border: 2px solid #a71d2a;
+  border: 2px solid #dc3545;
 }
 
 @media screen and (max-width: 850px) {

@@ -52,12 +52,16 @@ export default function TenantsTable() {
                                             <td>{items.phone}</td>
                                             <td>
                                                 {isSuperUser ?
-                                                    <div style={{width: '180px'}}>
+                                                    <div style={{width: '180px', display: 'flex', justifyContent: 'center', gap: '10px'}}>
+                                                        <button className='edit-btn' >Edit</button>
                                                         <button className='disable-btn'>Disable</button>
                                                         <button className='delete-btn'>Delete</button>
                                                     </div>
                                                     :
-                                                    <button className='disable-btn'>Disable</button>
+                                                    <div style={{width: '110px', display: 'flex', }}>
+                                                        <button className='edit-btn' >Edit</button>
+                                                        <button className='disable-btn'>Disable</button>
+                                                    </div>
                                                 }
                                             </td>
                                         </tr>
