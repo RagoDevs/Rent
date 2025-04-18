@@ -54,7 +54,7 @@ export const submitRequest = async (endpoint, method = "POST", body = null) => {
     const res = await response.json();
 
     if (response.status < 200 || response.status >= 300) {
-      throw new Error(res.error || "Request failed from constant");
+      
     }
 
     return res;

@@ -66,7 +66,7 @@ export default function Login() {
 
             } catch (error) {
                 setLoginError('Invalid email or password');
-                toast.error("Invalid email or password")
+                toast.error("Invalid email or password");
             }
         },
     });
