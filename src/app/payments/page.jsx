@@ -3,7 +3,7 @@
 import './payments.css'
 import Sidebar from "@/Components/SideBar/Sidebar";
 import Header from "@/Components/Topnav/header";
-import UpcomingPay from './Components/PaymentData/UpcomingTable';
+import { PayCards } from './Components/PaymentData/PayCards';
 import PayHistory from './Components/PayHistory/PayHistory';
 import { RequireAuth } from '@/Components/Require/Require';
 
@@ -22,7 +22,7 @@ export default function Payments() {
                             </div>
                             <div className="payments-main">
                                 <div className="upcoming">
-                                    <UpcomingPay />
+                                    <PayCards />
                                 </div>
                                 <div className="history">
                                     <PayHistory />
