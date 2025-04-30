@@ -12,7 +12,7 @@
     color: white;
     font-size: 20px;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .entrant--prof {
@@ -25,16 +25,22 @@
   
   } 
   
-  .entrant--prof img {
-    height: 5rem;
+  .tenant-icon {
+    margin: 0 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: rgb(9, 225, 60);
   }
   
   .entrant--prof h3 {
     color: white;
+    font-weight: 400;
     margin-bottom: .5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .entrant--details p {
     margin-left: 1rem;
-    color: aquamarine;
+    color: rgb(5, 192, 8);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }

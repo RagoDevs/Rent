@@ -7,10 +7,11 @@
 }
 
 .house--header h2 {
-  font-size: 35px;
+  font-size: 29px;
   color: white;
   font-family: sans-serif;
   font-weight: 400;
+  margin-left: .7rem;
 }
 
 .househeader--search {

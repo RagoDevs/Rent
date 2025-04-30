@@ -1,5 +1,6 @@
 'use client';
 
+import { UserRound } from 'lucide-react';
 import './NewEntrants.css'
 
 export default function NewEntrants() {
@@ -8,7 +9,9 @@ export default function NewEntrants() {
             <div className="dashwrapper-area2">
                 <h2>New Entrants</h2>
                 <div className="entrant--prof">
-                    <img src="/Assets/people.png" alt="" />
+                    <UserRound 
+                    className='tenant-icon'
+                    />
                         <div className="entrant--details">
                             <h3>Jack Adam</h3>
                             <p>House B - Ukonga</p>

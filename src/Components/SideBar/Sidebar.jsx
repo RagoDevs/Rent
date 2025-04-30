@@ -3,6 +3,7 @@
 import './Sidebar.css'
 
 import Link from "next/link";
+import { LayoutDashboard, Home, CreditCard, Users, Map, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useAuth } from '../Require/AuthProvider';
 
@@ -19,61 +20,54 @@ export default function Sidebar() {
                         <li className={pathname === '/dashboard' ? 'active' : ''}>
 
                             <Link href="/dashboard">
-                                <img
-                                    className='side--icon'
-                                    src="/Assets/menu.svg"
-                                    alt=""
-                                />
-                                Dashboard
+                                <div className="side-link">
+                                    <LayoutDashboard className="side--icon" />
+                                    Dashboard
+                                </div>
                             </Link>
                         </li>
                         <li className={pathname === '/houses' ? 'active' : ''}>
 
                             <Link href="/houses">
-                                <img
-                                    src="/Assets/home.png"
-                                    alt=""
-                                />
-                                Houses
+                            <div className="side-link">
+                                    <Home className="side--icon" />
+                                    Houses
+                                </div>
                             </Link>
                         </li>
                         <li className={pathname === '/payments' ? 'active' : ''}>
 
                             <Link href="/payments">
-                                <img
-                                    src="/Assets/credit-card.png"
-                                    alt=""
-                                />
-                                Payments
+                            <div className="side-link">
+                                    <CreditCard className="side--icon" />
+                                    Payments
+                                </div>
                             </Link>
                         </li>
                         <li className={pathname === '/tenants' ? 'active' : ''}>
 
                             <Link href="/tenants">
-                                <img
-                                    src="/Assets/lender.png"
-                                    alt=""
-                                />
-                                Tenants
+                            <div className="side-link">
+                                    <Users className="side--icon" />
+                                    Tenants
+                                </div>
                             </Link>
                         </li>
                         <li className={pathname === '/maps' ? 'active' : ''}>
 
                             <Link href="/maps">
-                                <img
-                                    src="/Assets/map.png"
-                                    alt=""
-                                />
-                                Maps
+                            <div className="side-link">
+                                    <Map className="side--icon" />
+                                    Maps
+                                </div>
                             </Link>
                         </li>
                         <div className="log--out" onClick={signout}>
                             <li className={pathname === '/logout' ? 'active' : ''}>
-                                <img
-                                    src="/Assets/exit.png"
-                                    alt=""
-                                />
-                                LogOut
+                            <div className="side-link">
+                                    <LogOut className="side--icon" />
+                                    LogOut
+                                </div>
 
                             </li>
                         </div>
