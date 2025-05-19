@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import './reset.css';
 import Image from "next/image";
 import { base_url } from "@/Components/constant";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,12 +17,15 @@ function ResetForm() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!password || !confirmPassword) {
             return setMessage('Please fill both fields');
         }
@@ -31,25 +34,32 @@ function ResetForm() {
             return setMessage('Passwords do not match');
         }
 
+        setLoading(true);
+
         try {
             const res = await fetch(`${base_url}/v1/admins/password/reset`, {
                 method: 'PUT',
                 headers: { "Content-Type": 'application/json' },
                 body: JSON.stringify({ token, password }),
             });
-            
-            if (res.status >= 200 && res.status < 300){
+
+            if (res.ok) {
+                toast.success('Password updated successfully!');
                 setMessage('Password updated successfully!');
-                toast.success('Password updated successfully!')
 
-            }else if (res.status == 500) {
-                 setMessage('Failed to reset password');
-
-            }else {
+                // Delay to show toast before redirect
+                setTimeout(() => {
+                    router.push('/login');
+                }, 2000);
+            } else if (res.status === 500) {
+                setMessage('Failed to reset password');
+            } else {
                 setMessage('Your reset link is invalid or has expired');
             }
         } catch (error) {
             setMessage('Something went wrong');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -63,7 +73,7 @@ function ResetForm() {
             <div className="reset-bg">
                 <div className="reset-container">
                     <div className="logo">Rent</div>
-                    { (token && token.length === 26) ? (
+                    {(token && token.length === 26) ? (
                         <form onSubmit={handleSubmit}>
                             <div className="password-wrapper">
                                 <input
@@ -95,7 +105,9 @@ function ResetForm() {
                                     onClick={togglePasswordVisibility}
                                 />
                             </div>
-                            <button className="btn" type="submit">Reset Password</button>
+                            <button className="btn" type="submit" disabled={loading}>
+                                {loading ? 'Resetting...' : 'Reset Password'}
+                            </button>
                         </form>
                     ) : (
                         <p className="red-text">Invalid reset link</p>
