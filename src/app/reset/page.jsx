@@ -18,6 +18,7 @@ function ResetForm() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false); // ✅ new state
 
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
@@ -46,11 +47,7 @@ function ResetForm() {
             if (res.ok) {
                 toast.success('Password updated successfully!');
                 setMessage('Password updated successfully!');
-
-                // Delay to show toast before redirect
-                setTimeout(() => {
-                    router.push('/login');
-                }, 2000);
+                setSuccess(true); // ✅ set success true
             } else if (res.status === 500) {
                 setMessage('Failed to reset password');
             } else {
@@ -74,46 +71,59 @@ function ResetForm() {
                 <div className="reset-container">
                     <div className="logo">Rent</div>
                     {(token && token.length === 26) ? (
-                        <form onSubmit={handleSubmit}>
-                            <div className="password-wrapper">
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                    required
-                                />
-                                <img
-                                    src={showPassword ? eyeSlashIcon : show}
-                                    alt="Toggle Password Visibility"
-                                    className="eye-icon"
-                                    onClick={togglePasswordVisibility}
-                                />
+                        !success ? (
+                            <form onSubmit={handleSubmit}>
+                                <div className="password-wrapper">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Password"
+                                        required
+                                    />
+                                    <img
+                                        src={showPassword ? eyeSlashIcon : show}
+                                        alt="Toggle Password Visibility"
+                                        className="eye-icon"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                </div>
+                                <div className="password-wrapper">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        placeholder="Confirm Password"
+                                        required
+                                    />
+                                    <img
+                                        src={showPassword ? eyeSlashIcon : show}
+                                        alt="Toggle Password Visibility"
+                                        className="eye-icon"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                </div>
+                                <button className="btn" type="submit" disabled={loading}>
+                                    {loading ? 'Resetting...' : 'Reset Password'}
+                                </button>
+                            </form>
+                        ) : (
+                            // ✅ Success message with Login button
+                            <div className="reset-success">
+                                <p className="green-text">{message}</p>
+                                <button
+                                    className="btn"
+                                    onClick={() => router.push('/login')}
+                                >
+                                    Go to Login
+                                </button>
                             </div>
-                            <div className="password-wrapper">
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    placeholder="Confirm Password"
-                                    required
-                                />
-                                <img
-                                    src={showPassword ? eyeSlashIcon : show}
-                                    alt="Toggle Password Visibility"
-                                    className="eye-icon"
-                                    onClick={togglePasswordVisibility}
-                                />
-                            </div>
-                            <button className="btn" type="submit" disabled={loading}>
-                                {loading ? 'Resetting...' : 'Reset Password'}
-                            </button>
-                        </form>
+                        )
                     ) : (
                         <p className="red-text">Invalid reset link</p>
                     )}
                     <div className="reset-note">
-                        {message && <p>{message}</p>}
+                        {message && !success && <p>{message}</p>}
                     </div>
                 </div>
             </div>
